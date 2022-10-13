@@ -33,12 +33,7 @@
             <div id="content">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-                        <div class="sidebar-brand-icon">
-                            <img src="{{asset('img/Devicor-Medical-Products.png')}}" alt="" height="40">
-                        </div>
-                    </a>
-                  
+                  <img src="{{asset('img/Devicor-Medical-Products.png')}}" alt="" height="40">
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -64,7 +59,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                 
-                    @yield('andonoee')
+                    @yield('andonscore')
                 </div>
                 <!-- /.container-fluid -->
 

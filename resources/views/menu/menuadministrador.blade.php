@@ -20,6 +20,7 @@
             <h6 class="collapse-header">componentes:</h6>
             <a class="collapse-item" href="{{route('machine')}}">Catálogo de Máquinas</a>
             <a class="collapse-item" href="{{route('parts')}}">Catálogo de Partes</a>
+            <a class="collapse-item" href="{{route('scrap')}}">Catálogo de Scrap</a>
             {{-- <a class="collapse-item" href="{{route('variable')}}">Variables</a> --}}
             <a class="collapse-item" href="{{route('typeevent')}}">Catálogo de eventos</a>
             <a class="collapse-item" href="{{route('shift')}}">Catálogo de turnos</a>

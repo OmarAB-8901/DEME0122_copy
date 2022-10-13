@@ -20,17 +20,17 @@
                                             <div class="col-md-5">
                                                 <select class="form-control" name="parte" required>
                                                     <option value="" disabled selected>Seleccione Parte</option>
-                                                    {{-- @foreach($roles as $rol)
-                                                    <option value="{{$rol['id']}}">{{$rol['description']}} </option>
-                                                    @endforeach --}}
+                                                    @foreach($parts as $var)
+                                                    <option value="{{$var['id']}}">{{$var['name']}} </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-5">
                                                 <select class="form-control" name="linea" required>
                                                     <option value="" disabled selected>Seleccione línea</option>
-                                                    {{-- @foreach($roles as $rol)
-                                                    <option value="{{$rol['id']}}">{{$rol['description']}} </option>
-                                                    @endforeach --}}
+                                                    @foreach($machines as $var)
+                                                    <option value="{{$var['id']}}">{{$var['name']}} </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
@@ -111,7 +111,7 @@
                             <div class="card-body">
                                 <center>
                                     <a>
-                                       <img src="{{ asset('img/gauge-speed.png')}}" width="450" heigth="450">
+                                       <img src="{{ asset('img/gauge-speed.png')}}" width="350" heigth="350">
                                 </center>
                             </div>
                         </div>
@@ -122,58 +122,67 @@
                     <div class="col-lg-12">
                         <div class="card shadow mb-4" style="border-color:#84329B">
                             <div class="card-header py-3"> 
-                                <h2 class="m-0 font-weight-bold text-primary" style="text-align:center">Paros</h2>
+                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center">Paros</h5>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class=" col-xl-3">
+                                    <div class=" col-xl-2">
                                         <button type="submit" class="btn btn-primary" style="background-color:green">MANTENIMINIENTO</button>
                                     </div>
-                                    <div class="col-xl-3">
+                                    <div class="col-xl-2">
                                         <button type="submit" class="btn btn-primary" style="background-color:rgb(0, 26, 255)">CALIDAD</button>
                                     </div>
-                                    <div class="col-xl-3">
+                                    <div class="col-xl-2">
                                         <button type="submit" class="btn btn-primary" style="background-color:red">MATERIALES</button>
                                     </div>
-                                    <div class="col-xl-3">
+                                    <div class="col-xl-1">
                                         <button type="submit" class="btn btn-primary" style="background-color:rgb(128, 128, 128)">PERSONAL</button>
+                                    </div>
+                                    <div class="col-xl-2">
+                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(84, 135, 155)">VALIDACIONES</button>
+                                    </div>
+                                    <div class="col-xl-1">
+                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(74, 173, 74)">SEP UP</button>
+                                    </div>
+                                    <div class="col-xl-1">
+                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(113, 56, 139)">NO PLAN</button>
                                     </div>
                                 </div> 
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="row">
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="card shadow mb-4" style="border-color:#84329B">
                             <div class="card-header py-3"> 
-                                <h2 class="m-0 font-weight-bold text-primary" style="text-align:center">Scrap</h2>
+                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center">Scrap</h5>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class=" col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:green">VIBRACION</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color:green">22001</button>
                                     </div>
                                     <div class="col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(0, 26, 255)">ROTACION</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(0, 26, 255)">22005</button>
                                     </div>
                                     <div class="col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(0, 255, 42)">C-TEST</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(66, 180, 85)">21001</button>
                                     </div>
                                     <div class="col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:red">ID +/-</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color:red">3002</button>
                                     </div>
                                     <div class="col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:grey">FALTANTE</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color:grey">21007</button>
                                     </div>
                                     <div class="col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(128, 128, 128)">VISUAL</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(128, 128, 128)">48002</button>
                                     </div>
                                 </div> 
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>

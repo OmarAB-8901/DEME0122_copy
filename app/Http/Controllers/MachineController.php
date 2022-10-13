@@ -37,7 +37,7 @@ class MachineController extends Controller
         
         $machine = new Machine();
         $machine->name = $request->name;
-        $machine->idgroup = $request->idgroup;
+        $machine->idgroup = 1;
         $machine->activar_oee = $request->oee ? true : false;
         $machine->activar_eventos = $request->eventos ? true : false;
         $machine->condicion = '1';
@@ -58,7 +58,7 @@ class MachineController extends Controller
     {
         $machine = Machine::findOrFail($request->id);
         $machine->name = $request->name;
-        $machine->idgroup = $request->idgroup;
+        $machine->idgroup = 1;
         $machine->activar_oee = $request->oee ? true : false;
         $machine->activar_eventos = $request->eventos ? true : false;
         $machine->condicion = '1';

@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/andon/oee', 'AndonOEEController@index')->name('andonoee');
 Route::get('/andon/event', 'AndonEventController@index')->name('andonevent');
+Route::get('/andon/score', 'AndonScorecardController@index')->name('andonscore');
 
 Route::group(['middleware'=>['auth']],function(){
 
@@ -101,6 +102,12 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/shift/actualizar', 'ShiftController@update')->name('s_edit');
         Route::put('/shift/desactivar', 'ShiftController@desactivar')->name('s_desactivar');
         Route::put('/shift/activar', 'ShiftController@activar')->name('s_activar');
+
+        Route::get('/scraps', 'ScrapsController@index')->name('scrap');
+        Route::post('/scraps/registrar', 'ScrapsController@store')->name('sc_registrar');
+        Route::put('/scraps/actualizar', 'ScrapsController@update')->name('sc_edit');
+        Route::put('/scraps/desactivar', 'ScrapsController@desactivar')->name('sc_desactivar');
+        Route::put('/scraps/activar', 'ScrapsController@activar')->name('sc_activar');
 
     });
 

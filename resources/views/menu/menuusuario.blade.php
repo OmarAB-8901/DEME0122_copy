@@ -28,9 +28,9 @@
             @foreach($variables->listVaribles($machine['id']) as $var)
             <a class="collapse-item"  href="{{route('trends',['idvariable'=> $var['id']])}}">{{$var['name']}}</a>
             @endforeach
-            @if($machine['activar_oee']==1)
+            {{-- @if($machine['activar_oee']==1)
             <a class="collapse-item" href="{{route('andon',['idmachine'=> $machine['id']])}}">Andon</a>
-            @endif
+            @endif --}}
         </div>
         </div> 
     </li>

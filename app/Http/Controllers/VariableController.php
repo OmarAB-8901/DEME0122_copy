@@ -62,6 +62,7 @@ class VariableController extends Controller
 
     public function listVaribles($id_maquines){
         $variables = Variable::where('idmachine', '=',$id_maquines)
+            ->where('condicion', '=','1')
             ->select('id','name')
             ->orderBy('id', 'asc')->get();
         return  $variables;

@@ -30,7 +30,7 @@
   <div id="wrapper">
     @if(Auth::check())
         @if (Auth::user()->hasRole('Operador'))
-        @elseif (Auth::user()->hasRole('user') or Auth::user()->hasRole('admin'))
+        @elseif (Auth::user()->hasRole('Supervisor Mantenimiento') or Auth::user()->hasRole('admin'))
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -46,7 +46,7 @@
                 @if(Auth::check())
                         @if (Auth::user()->hasRole('admin'))
                             @include('menu.menuadministrador')
-                        @elseif (Auth::user()->hasRole('user'))
+                        @elseif (Auth::user()->hasRole('Supervisor Mantenimiento'))
                             @include('menu.menuusuario')
                         @endif
 
@@ -75,6 +75,14 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    @if (Auth::user()->hasRole('Operador'))
+                        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
+                            <div class="sidebar-brand-icon">
+                                <img src="{{asset('img/Devicor-Medical-Products.png')}}" alt="" height="40">
+                            </div>
+                        </a>
+                    @endif
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 

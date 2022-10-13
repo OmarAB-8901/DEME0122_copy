@@ -80,7 +80,7 @@
                         <!-- Default Card Example -->
                         <div class="card shadow mb-4" style="border-color:#84329B">
                              <div class="card-header py-3"> 
-                                <h2 class="m-0 font-weight-bold text-primary" style="text-align:center">Entrenamiento</h2>
+                                <h2 class="m-0 font-weight-bold text-primary" style="text-align:center">Personal</h2>
                              </div>
                              <div class="card-body">
                                 

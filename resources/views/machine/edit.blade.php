@@ -19,17 +19,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-md-3 form-control-label" for="text-input">Grupo</label>
-                                                    <div class="col-md-9">
-                                                        <select class="form-control" name="idgroup" required>
-                                                            <option value="" disabled >Seleccione</option>
-                                                            @foreach($groups as $group)
-                                                            <option value="{{$group['id']}}"  @if($group['id']=== $var['id_group']) selected='selected' @endif>{{$group['name']}} </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
                                                     <label class="col-md-3 form-control-label" for="text-input">Oee</label>
                                                         <div class="col-md-9">
                                                             <div class="form-check">

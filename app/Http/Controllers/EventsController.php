@@ -27,9 +27,10 @@ class EventsController extends Controller
 
     public function datos($idmachine,$caso,$date)
     {  
-        $DB_SP = env('DB_SP');
-        $DB_SP_START= env('DB_SP_START');
-        $DB_SP_END= env('DB_SP_END');
+        $DB_SP = "call";
+        $DB_SP_START= "(";
+        $DB_SP_END= ")";
+        
         $idgroup = auth()->user()->idgroup;
         $pareto = DB::select($DB_SP.' ConsultaParetoHras '.$DB_SP_START.'?,?,?'.$DB_SP_END,array($caso,$idmachine,$date));
         $paretoGrid = DB::select($DB_SP.' ConsultaParetoGrid '.$DB_SP_START.'?,?,?,?'.$DB_SP_END,array($caso,$idgroup,$idmachine,$date));
