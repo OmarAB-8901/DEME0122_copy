@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
     {
         $role_user = Role::where('name', 'Supervisor Mantenimiento')->first();
         $role_admin = Role::where('name', 'admin')->first();
-        $role_admin = Role::where('name', 'Lider')->first();
+        $role_lider = Role::where('name', 'Lider')->first();
 
         $user = new User();
         $user->name = 'Jorge Aguilar';
@@ -42,6 +42,6 @@ class UserTableSeeder extends Seeder
         $user->idgroup = 1;
         $user->notificaciones= 0;
         $user->save();
-        $user->roles()->attach($role_admin);
+        $user->roles()->attach($role_lider);
      }
 }
