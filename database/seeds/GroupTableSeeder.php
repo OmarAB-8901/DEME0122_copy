@@ -21,10 +21,6 @@ class GroupTableSeeder extends Seeder
         $group->save();
 
         $group = new Groups();
-        $group->name = 'Mantenimiento';
-        $group->save();
-
-        $group = new Groups();
         $group->name = 'Materiales';
         $group->save();
 
