@@ -14,7 +14,7 @@ class PlanesController extends Controller
     public function index(Request $request)
     {
             $planes = Planes::join('machines','planes.idmachine','=','machines.id')
-            ->select('planes.id','orden_trabajo','modelo','planes.idmachine','machines.name as name_machine','lote','ict','plan','condicion')->orderBy('name', 'asc')->get();
+            ->select('planes.id','orden_trabajo','modelo','planes.idmachine','machines.name as name_machine','lote','ict','plan','planes.condicion')->orderBy('name', 'asc')->get();
 
             $models = Models::select('id','name')->orderBy('name', 'asc')->get();
 
