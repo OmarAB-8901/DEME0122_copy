@@ -22,6 +22,7 @@ class UserTableSeeder extends Seeder
         $user->email = 'Jorge.Aguilar@mammotome.com';
         $user->password = bcrypt('Server2106');
         $user->idgroup = 1;
+        $user->notificaciones= 1;
         $user->save();
         $user->roles()->attach($role_user);
 
@@ -30,6 +31,7 @@ class UserTableSeeder extends Seeder
         $user->email = 'admin@mammotome.com';
         $user->password = bcrypt('Server2106');
         $user->idgroup = 1;
+        $user->notificaciones= 0;
         $user->save();
         $user->roles()->attach($role_admin);
 
@@ -38,6 +40,7 @@ class UserTableSeeder extends Seeder
         $user->email = 'lider@mammotome.com';
         $user->password = bcrypt('Server2106');
         $user->idgroup = 1;
+        $user->notificaciones= 0;
         $user->save();
         $user->roles()->attach($role_admin);
      }
