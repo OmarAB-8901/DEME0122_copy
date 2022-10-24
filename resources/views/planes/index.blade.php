@@ -106,7 +106,7 @@
                               </div>
                           </div>
                           <div class="form-group row">
-                            <label class="col-md-3 form-control-label" for="text-input">Maquina</label>
+                            <label class="col-md-3 form-control-label" for="text-input">Línea</label>
                             <div class="col-md-9">
                                 <select class="form-control" name="idmachine" required>
                                     <option value="" disabled selected>Seleccione</option>
