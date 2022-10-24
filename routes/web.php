@@ -73,13 +73,19 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put('/typeevent/desactivar', 'TypeEventController@desactivar')->name('t_desactivar');
         Route::put('/typeevent/activar', 'TypeEventController@activar')->name('t_activar');
 
-        Route::get('/parts', 'PartsController@index')->name('parts');
-        Route::post('/parts/registrar', 'PartsController@store')->name('p_registrar');
-        Route::put('/parts/actualizar', 'PartsController@update')->name('p_edit');
-        Route::put('/parts/desactivar', 'PartsController@desactivar')->name('p_desactivar');
-        Route::put('/parts/activar', 'PartsController@activar')->name('p_activar');
-        Route::put('/parts/habsensor/desactivar', 'PartsController@HabSensor_desactivar')->name('ps_desactivar');
-        Route::put('/parts/habsensor/activar', 'PartsController@HabSensor_activar')->name('ps_activar');
+        Route::get('/models', 'ModelsController@index')->name('models');
+        Route::post('/models/registrar', 'ModelsController@store')->name('mod_registrar');
+        Route::put('/models/actualizar', 'ModelsController@update')->name('mod_edit');
+        Route::put('/models/desactivar', 'ModelsController@desactivar')->name('mod_desactivar');
+        Route::put('/models/activar', 'ModelsController@activar')->name('mod_activar');
+        Route::put('/models/habsensor/desactivar', 'ModelsController@HabSensor_desactivar')->name('mods_desactivar');
+        Route::put('/models/habsensor/activar', 'ModelsController@HabSensor_activar')->name('mods_activar');
+
+        Route::get('/planes', 'PlanesController@index')->name('planes');
+        Route::post('/planes/registrar', 'PlanesController@store')->name('pl_registrar');
+        Route::put('/planes/actualizar', 'PlanesController@update')->name('pl_edit');
+        Route::put('/planes/desactivar', 'PlanesController@desactivar')->name('pl_desactivar');
+        Route::put('/planes/activar', 'PlanesController@activar')->name('pl_activar');
 
         Route::get('/roles', 'RolesController@index')->name('roles');
         Route::post('/roles/registrar', 'RolesController@store')->name('r_registrar');
@@ -111,7 +117,7 @@ Route::group(['middleware'=>['auth']],function(){
 
     });
 
-    Route::group(['middleware' => ['Operador']], function () {
+    Route::group(['middleware' => ['Lider']], function () {
         Route::get('/button/andon', 'AndonController@index')->name('andomb');
     });
 

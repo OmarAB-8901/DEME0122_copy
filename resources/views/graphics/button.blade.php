@@ -17,19 +17,11 @@
                                 <form>
                                     <div class="col-md-9">
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-10">
                                                 <select class="form-control" name="parte" required>
-                                                    <option value="" disabled selected>Seleccione Parte</option>
-                                                    @foreach($parts as $var)
-                                                    <option value="{{$var['id']}}">{{$var['name']}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <select class="form-control" name="linea" required>
-                                                    <option value="" disabled selected>Seleccione línea</option>
-                                                    @foreach($machines as $var)
-                                                    <option value="{{$var['id']}}">{{$var['name']}} </option>
+                                                    <option value="" disabled selected>Seleccione Orden de Trabajo</option>
+                                                    @foreach($planes as $var)
+                                                    <option value="{{$var['id']}}">{{$var['orden_trabajo']}} </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -42,22 +34,22 @@
                                     <hr class="sidebar-divider">
                                     <div class="form-row">
                                       <div class="form-group col-md-8">
-                                        <label for="inputEmail4">#Parte</label>
-                                        <input type="text" class="form-control" id="parte" placeholder="#Parte" readonly="readonly">
+                                        <label for="inputEmail4">#Modelo</label>
+                                        <input type="text" class="form-control" name="modelo" placeholder="Modelo" readonly="readonly">
                                       </div>
                                       <div class="form-group col-md-10">
                                         <label for="inputPassword4">Descripción</label>
-                                        <input type="text" class="form-control" id="descripcion" placeholder="Descripción" readonly="readonly">
+                                        <input type="text" class="form-control" name="descripcion" placeholder="Descripción" readonly="readonly">
                                       </div>
                                     </div>
                                     <div class="form-row">
                                          <div class="form-group col-md-6">
                                             <label for="inputCity">Pzs x Hora</label>
-                                            <input type="text" class="form-control" id="pzshora" placeholder="Pzs x Hora" readonly="readonly">
+                                            <input type="text" class="form-control" name="ict" placeholder="Pzs x Hora" readonly="readonly">
                                           </div>
                                           <div class="form-group col-md-6">
                                             <label for="inputZip">Plan</label>
-                                            <input type="text" class="form-control" id="plan" placeholder="Plan" readonly="readonly">
+                                            <input type="text" class="form-control" name="plan" placeholder="Plan" readonly="readonly">
                                           </div>
                                     </div>
                                     
@@ -66,7 +58,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
 
                         <!-- Default Card Example -->
                         <div class="card shadow mb-4" style="border-color:#84329B">
@@ -88,7 +80,7 @@
                                     <div class="col-xl-6" style="background-color:rgb(213,77,84);border-color:rgb(213,77,84)">
                                         <center>
                                             <a>
-                                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center" id="resQuality">PIEZAS SCRAP</h5>
+                                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center" id="resQuality">DEFECTOS</h5>
                                                 <img src="{{ asset('img/icono_remove.png')}}" width="40" heigth="40">
                                                 <h1 class="m-0 font-weight-bold text-primary" style="text-align:center" id="resQuality">20</h1>
                                             </a>
@@ -101,7 +93,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
 
                        <!-- Default Card Example -->
                        <div class="card shadow mb-4" style="border-color:#84329B">
@@ -110,8 +102,7 @@
                             </div>
                             <div class="card-body">
                                 <center>
-                                    <a>
-                                       <img src="{{ asset('img/gauge-speed.png')}}" width="350" heigth="350">
+                                    <div class="echarts" id="chart-panel" style="width: 500px; height: 250px;"></div>
                                 </center>
                             </div>
                         </div>
@@ -127,7 +118,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class=" col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:green">MANTENIMINIENTO</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color:green">MANTENIMIENTO</button>
                                     </div>
                                     <div class="col-xl-2">
                                         <button type="submit" class="btn btn-primary" style="background-color:rgb(0, 26, 255)">CALIDAD</button>
@@ -189,6 +180,8 @@
 </div>
 @endsection
 @section('scripts')
+<script src="{{ asset('vendor/echarts/echarts.min.js')}}"></script>
+<script src="{{ asset('js/efficiency.js')}}"></script>
 {{-- <script src="{{ asset('js/andon.js')}}"></script>
 <script src="{{ asset('js/andon5.js')}}"></script> --}}
 @endsection

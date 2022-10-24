@@ -9,26 +9,25 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{route('p_edit')}}" role="form" method="post"  class="form-horizontal">
+                                            <form action="{{route('mod_edit')}}" role="form" method="post"  class="form-horizontal">
                                             {{ csrf_field() }} {{method_field('PUT')}}
                                                 <div class="form-group row">
-                                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
+                                                    <label class="col-md-3 form-control-label" for="text-input">Modelo</label>
                                                     <div class="col-md-9">
                                                         <input type="hidden" class="form-control" name="id"  value="{{$var['id']}}" required> 
-                                                        <input type="text" class="form-control" name="name" placeholder="Nombre del turno" value="{{$var['name']}}" maxlength="30" required>
+                                                        <input type="text" class="form-control" name="name" placeholder="Nombre del Modelo" value="{{$var['name']}}" maxlength="30" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label class="col-md-3 form-control-label" for="text-input">Descripción</label>
                                                     <div class="col-md-9">
-                                                        <input type="hidden" class="form-control" name="id"  value="{{$var['id']}}" required> 
                                                         <input type="text" class="form-control" name="description" placeholder="Descripción" value="{{$var['description']}}" maxlength="30" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-md-3 form-control-label" for="text-input">Pzs X Hora</label>
+                                                    <label class="col-md-3 form-control-label" for="text-input">Valor Std</label>
                                                     <div class="col-md-9">
-                                                        <input type="number" class="form-control" name="ict" placeholder="Pzs X Hrs" value="{{$var['ict']}}" maxlength="30" required>
+                                                        <input type="number" class="form-control" name="valor_std" placeholder="Valor Std" value="{{$var['valor_std']}}" maxlength="30" required>
                                                     </div>
                                                   </div> 
                       

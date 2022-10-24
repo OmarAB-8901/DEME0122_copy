@@ -22,7 +22,7 @@
                       <th>Opciones</th>
                       <th>Id</th>
                       <th>Nombre</th>
-                      <th>Tiempo de respuesta (Seg)</th>
+                      <th>Tiempo de respuesta (Min)</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Machine;
-use App\Parts;
+use App\Planes;
 
 class AndonController extends Controller
 {
@@ -15,13 +15,11 @@ class AndonController extends Controller
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
 
-        $machines = Machine::where('condicion', '=','1')
-        ->select('machines.id','machines.name')->orderBy('name', 'asc')->get();
-
-        $parts = Parts::where('condicion', '=','1')
-        ->select('id','name')->orderBy('name', 'asc')->get();
+        $planes = Planes::join('machines','planes.idmachine','=','machines.id')
+        ->where('planes.condicion', '=','1')
+        ->select('planes.id','orden_trabajo','planes.idmachine','machines.name as name_machine')->orderBy('orden_trabajo', 'asc')->get();
         
-        return view('graphics.button')->with(compact('machines','parts'));
+        return view('graphics.button')->with(compact('planes'));
     }
 
     

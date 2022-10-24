@@ -25,13 +25,10 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['user', 'admin','Operador','Supervisor Mantenimiento','Supervisores de Manufactura','Gerentes de Manufactura','Gerente de Planta']);
+        $request->user()->authorizeRoles(['user', 'admin','Lider','Supervisor Mantenimiento','Supervisores de Manufactura','Gerentes de Manufactura','Gerente de Planta']);
 
-        if ($request->user()->hasRole('Operador')) {
+        if ($request->user()->hasRole('Lider')) {
             return Redirect::to('/button/andon');
-        }else if ($request->user()->hasRole('andon')) {
-            return Redirect::to('/andon');
-            
         }else {
             return view('home');
         }

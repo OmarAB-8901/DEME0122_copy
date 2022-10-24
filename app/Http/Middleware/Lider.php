@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Operador
+class Lider
 {
     /**
      * Handle an incoming request.

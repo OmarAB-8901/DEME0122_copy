@@ -29,8 +29,8 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
     @if(Auth::check())
-        @if (Auth::user()->hasRole('Operador'))
-        @elseif (Auth::user()->hasRole('Supervisor Mantenimiento') or Auth::user()->hasRole('admin'))
+        @if (Auth::user()->hasRole('Lider'))
+        @elseif (Auth::user()->idgroup==1)
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -46,7 +46,7 @@
                 @if(Auth::check())
                         @if (Auth::user()->hasRole('admin'))
                             @include('menu.menuadministrador')
-                        @elseif (Auth::user()->hasRole('Supervisor Mantenimiento'))
+                        @elseif (Auth::user()->idgroup==1)
                             @include('menu.menuusuario')
                         @endif
 
