@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartsTable extends Migration
+class CreateModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parts', function (Blueprint $table) {
+        Schema::create('models', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 255);
-            $table->string('description', 255);
-            $table->integer('ict');
-            $table->integer('plan');
+            $table->string('name', 60);
+            $table->string('description', 100);
+            $table->integer('valor_std');
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ class CreatePartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parts');
+        Schema::dropIfExists('models');
     }
 }

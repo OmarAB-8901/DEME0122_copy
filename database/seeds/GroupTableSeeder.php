@@ -13,7 +13,29 @@ class GroupTableSeeder extends Seeder
     public function run()
     {
         $group = new Groups();
-        $group->name = 'SINCI';
+        $group->name = 'General';
+        $group->save();
+
+        $group = new Groups();
+        $group->name = 'Mantenimiento';
+        $group->save();
+
+        $group = new Groups();
+        $group->name = 'Mantenimiento';
+        $group->save();
+
+        $group = new Groups();
+        $group->name = 'Materiales';
+        $group->save();
+
+        $group = new Groups();
+        $group->name = 'Calidad';
+        $group->save();
+
+        $group = new Groups();
+        $group->name = 'Personal';
         $group->save();
     }
+
+
 }
