@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(MachineTableSeeder::class);
         $this->call(Hab_sensorTableSeeder::class);
+        $this->call(ShiftTableSeeder::class);
     }
 }
