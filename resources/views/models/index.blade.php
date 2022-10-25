@@ -56,19 +56,19 @@
                         <button data-toggle="modal" title="Editar" data-target="#myModalEdit{{$var['id']}}" type="button" class="btn btn-primary2 btn-circle btn-sm">
                         <img src="{{ asset('img/icono_editar_actualizar.png')}}" height="30">
                         </button> &nbsp;
-                        @include('parts.edit')
+                        @include('models.edit')
 
 
                         @if($var['condicion']==1)
                           <button type="button"  title="Desactivar" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#myModalDesactivar{{$var['id']}}">
                             <img src="{{ asset('img/icono_cambiar_eliminar.png')}}" height="30">
                           </button>
-                          @include('parts.delete')
+                          @include('models.delete')
                         @else
                             <button type="button"  title="Activar" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#myModalActivar{{$var['id']}}">
                                 <i class="fas fa-check"></i>
                             </button>
-                            @include('parts.activar')
+                            @include('models.activar')
                         @endif
                      </td>
                      <td>{{$var['name']}}</td>

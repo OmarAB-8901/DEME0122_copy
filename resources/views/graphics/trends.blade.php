@@ -52,8 +52,7 @@
         window.addEventListener('resize',function(){
             myChart.resize();
         });
-
-    });
+   });
 
 </script>
 <script>

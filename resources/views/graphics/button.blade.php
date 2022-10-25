@@ -180,6 +180,16 @@
 </div>
 @endsection
 @section('scripts')
+<script>
+    $(document).ready(function()
+       {
+           //$('#myModalLoading').modal({ backdrop: 'static', keyboard: false });  
+           window.addEventListener('resize',function(){
+               myChart.resize();
+           });
+      });
+   
+</script>
 <script src="{{ asset('vendor/echarts/echarts.min.js')}}"></script>
 <script src="{{ asset('js/efficiency.js')}}"></script>
 {{-- <script src="{{ asset('js/andon.js')}}"></script>
