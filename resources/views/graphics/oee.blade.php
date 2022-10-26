@@ -37,19 +37,19 @@
                     <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0">
                     <thead>
                         <tr>
-                        <th style="font-size:85%;">Date</th>
-                        <th style="font-size:85%;">OEE</th>
-                        <th style="font-size:85%;">Availability</th>
-                        <th style="font-size:85%;">Performance</th>
-                        <th style="font-size:85%;">Quality</th>
-                        <th style="font-size:85%;">RunTime</th>
-                        <th style="font-size:85%;">AvailableTime</th>
-                        <th style="font-size:85%;">ICT</th>
-                        <th style="font-size:85%;">TotalParts</th>
-                        <th style="font-size:85%;">GoodParts</th>
-                        <th style="font-size:85%;">PartId</th>
-                        <th style="font-size:85%;">LotId</th>
-                        <th style="font-size:85%;">Shift</th>
+                            <th style="font-size:85%;">Semana</th>
+                            <th style="font-size:85%;">Date</th>
+                            <th style="font-size:85%;">Líne</th>
+                            <th style="font-size:85%;">Turno</th>
+                            <th style="font-size:85%;">Orden de Trabajo</th>
+                            <th style="font-size:85%;">Modelo</th>
+                            <th style="font-size:85%;">Lote</th>
+                            <th style="font-size:85%;">Plan</th>
+                            <th style="font-size:85%;">Balance</th>
+                            <th style="font-size:85%;">Piezas Producidas</th>
+                            <th style="font-size:85%;">Diferencia</th>
+                            <th style="font-size:85%;">% Adh</th>
+                            <th style="font-size:85%;">Estatus</th>
                         </tr>
                     </thead>
                     <tbody id="cuerpo">
