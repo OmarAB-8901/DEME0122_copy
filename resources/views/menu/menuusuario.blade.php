@@ -23,7 +23,7 @@
             <a class="collapse-item" href="{{route('oee',['idmachine'=> $machine['id']])}}">Oee</a>
             @endif
             @if($machine['activar_eventos']==1)
-            <a class="collapse-item"  href="{{route('events',['idmachine'=> $machine['id']])}}">Pareto</a>
+            <a class="collapse-item"  href="{{route('events',['idmachine'=> $machine['id']])}}">Tiempos Muertos</a>
             @endif
             @foreach($variables->listVaribles($machine['id']) as $var)
             <a class="collapse-item"  href="{{route('trends',['idvariable'=> $var['id']])}}">{{$var['name']}}</a>

@@ -68,7 +68,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-xl-6" style="background-color:rgb(0,161,203);border-color:rgb(0,161,203)">
+                                    <div class="col-xl-6" style="background-color:#008f39;border-color:#008f39">
                                         <center>
                                             <a>
                                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center" id="resQuality">PIEZAS OK</h5>
