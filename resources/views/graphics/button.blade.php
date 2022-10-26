@@ -5,7 +5,7 @@
     <div class="col-xl-12 col-lg-7">
         <div class="card shadow mb-4">
             <div class="card-header py-3" style="background-color:rgb(250,250,250);border-color:rgb(250,250,250)">
-                    <h1 class="m-0 font-weight-bold text-primary" style="text-align:center">Andon</h1>
+                    <h1 class="m-0 font-weight-light text-primary font-italic display-4" style="text-align:center">Andon</h1>
                     {{-- <input type="date" class="form-control" name="date" id="date" value="{{$date}}">      --}}
             </div>
             <div class="card-body">

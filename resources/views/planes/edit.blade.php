@@ -30,28 +30,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-md-3 form-control-label" for="text-input">Maquina</label>
-                                                    <div class="col-md-9">
-                                                        <select class="form-control" name="idmachine" required>
-                                                            <option value="">Seleccione</option>
-                                                            @foreach($machines as $machine)
-                                                            <option value="{{$machine['id']}}"  @if($machine['id']=== $var['idmachine']) selected='selected' @endif>{{$machine['name']}} </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
                                                     <label class="col-md-3 form-control-label" for="text-input">lote</label>
                                                     <div class="col-md-9">
-                                                        <input type="text" class="form-control" name="lote" placeholder="Descripción" value="{{$var['lote']}}" maxlength="30" required>
+                                                        <input type="text" class="form-control" name="lote" placeholder="Descripción" value="{{$var['lotId']}}" maxlength="30" required>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-md-3 form-control-label" for="text-input">Pzs X Hora</label>
-                                                    <div class="col-md-9">
-                                                        <input type="number" class="form-control" name="ict" placeholder="Pzs X Hrs" value="{{$var['ict']}}" maxlength="30" required>
-                                                    </div>
-                                                </div> 
                                                 <div class="form-group row">
                                                     <label class="col-md-3 form-control-label" for="text-input">Plan</label>
                                                     <div class="col-md-9">

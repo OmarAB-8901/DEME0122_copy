@@ -121,9 +121,20 @@
                             <div class="form-group row">
                               <label class="col-md-3 form-control-label" for="text-input">Valor Std</label>
                               <div class="col-md-9">
-                                  <input type="number" class="form-control" name="valor_std" placeholder="Valor Std" maxlength="30" required>
+                                  <input type="number" class="form-control" name="valor_std" placeholder="Valor Std" maxlength="30" step="any" required>
                               </div>
                             </div> 
+                            <div class="form-group row">
+                              <label class="col-md-3 form-control-label" for="text-input">Línea</label>
+                              <div class="col-md-9">
+                                  <select class="form-control" name="idmachine" required>
+                                      <option value="" disabled selected>Seleccione</option>
+                                      @foreach($machines as $machine)
+                                      <option value="{{$machine['id']}}">{{$machine['name']}} </option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                            </div>
 
                             <div  class="form-group row div-error">
                                 <div class="text-center text-error">

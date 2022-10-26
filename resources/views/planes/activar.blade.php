@@ -9,7 +9,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{route('p_activar')}}" role="form" method="post"  class="form-horizontal">
+                                            <form action="{{route('pl_activar')}}" role="form" method="post"  class="form-horizontal">
                                             {{ csrf_field() }} {{method_field('PUT')}}
                                                 <div class="form-group row">
                                                 Esta seguro de activar esta parte?

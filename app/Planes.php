@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Planes extends Model
 {
     protected $fillable=[
-        'orden_trabajo','modelo','lote','ict','plan','condicion'
+        'orden_trabajo','modelo','lote','plan','condicion'
     ];
 
     public function user()

@@ -75,10 +75,10 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    @if (Auth::user()->hasRole('Operador'))
+                    @if (Auth::user()->hasRole('Lider'))
                         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
                             <div class="sidebar-brand-icon">
-                                <img src="{{asset('img/Devicor-Medical-Products.png')}}" alt="" height="40">
+                                <img src="{{asset('img/Mammotome.png')}}" alt="" height="50">
                             </div>
                         </a>
                     @endif

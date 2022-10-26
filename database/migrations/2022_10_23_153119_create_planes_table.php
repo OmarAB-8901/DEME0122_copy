@@ -15,14 +15,14 @@ class CreatePlanesTable extends Migration
     {
         Schema::create('planes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('orden_trabajo', 60);
-            $table->string('modelo', 45);
-            $table->integer('idmachine')->unsigned();
+            $table->string('work_order', 60);
+            $table->integer('model')->unsigned();
             $table->string('lotId', 45)->nullable();
-            $table->integer('ict')->nullable();
             $table->integer('plan')->nullable();
             $table->boolean('condicion')->default(1);
             $table->timestamps();
+
+            $table->foreign('model')->references('id')->on('models');
         });
     }
 
