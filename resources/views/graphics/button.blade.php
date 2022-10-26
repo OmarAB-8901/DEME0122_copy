@@ -126,17 +126,14 @@
                                     <div class="col-xl-2">
                                         <button type="submit" class="btn btn-primary" style="background-color:red">MATERIALES</button>
                                     </div>
-                                    <div class="col-xl-1">
+                                    <div class="col-xl-2">
                                         <button type="submit" class="btn btn-primary" style="background-color:rgb(128, 128, 128)">PERSONAL</button>
                                     </div>
                                     <div class="col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(84, 135, 155)">VALIDACIONES</button>
-                                    </div>
-                                    <div class="col-xl-1">
                                         <button type="submit" class="btn btn-primary" style="background-color:rgb(74, 173, 74)">SEP UP</button>
                                     </div>
-                                    <div class="col-xl-1">
-                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(113, 56, 139)">NO PLAN</button>
+                                    <div class="col-xl-2">
+                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(113, 56, 139)">OTROS</button>
                                     </div>
                                 </div> 
                             </div>
@@ -147,7 +144,7 @@
                     <div class="col-lg-12">
                         <div class="card shadow mb-4" style="border-color:#84329B">
                             <div class="card-header py-3"> 
-                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center">Scrap</h5>
+                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center">Defectos</h5>
                             </div>
                             <div class="card-body">
                                 <div class="row">
