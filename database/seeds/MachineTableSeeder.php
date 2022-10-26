@@ -15,7 +15,7 @@ class MachineTableSeeder extends Seeder
     {
         $machine = new Machine();
         $machine->idgroup = 1;
-        $machine->name = 'Linea 77 Hydromark Pouch';
+        $machine->name = 'Línea 77 Hydromark Pouch';
         $machine->activar_oee = 1;
         $machine->activar_eventos = 1;
         $machine->condicion = 1;
@@ -23,7 +23,7 @@ class MachineTableSeeder extends Seeder
 
         $machine = new Machine();
         $machine->idgroup = 1;
-        $machine->name = 'Linea 77 Hydromark Gel';
+        $machine->name = 'Línea 77 Hydromark Gel';
         $machine->activar_oee = 1;
         $machine->activar_eventos = 1;
         $machine->condicion = 1;

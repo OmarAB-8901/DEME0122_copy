@@ -21,7 +21,7 @@
                                                 <select class="form-control" name="parte" required>
                                                     <option value="" disabled selected>Seleccione Orden de Trabajo</option>
                                                     @foreach($planes as $var)
-                                                    <option value="{{$var['id']}}">{{$var['orden_trabajo']}} </option>
+                                                    <option value="{{$var['id']}}">{{$var['work_order']}} </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
 
                         <!-- Default Card Example -->
                         <div class="card shadow mb-4" style="border-color:#84329B">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
 
                        <!-- Default Card Example -->
                        <div class="card shadow mb-4" style="border-color:#84329B">
@@ -101,9 +101,9 @@
                             <h2 class="m-0 font-weight-bold text-primary" style="text-align:center">Eficiencia</h2>
                             </div>
                             <div class="card-body">
-                                <center>
+                                <div class="row">
                                     <div class="echarts" id="chart-panel" style="width: 500px; height: 250px;"></div>
-                                </center>
+                                </div>
                             </div>
                         </div>
 
@@ -183,7 +183,6 @@
 <script>
     $(document).ready(function()
        {
-           //$('#myModalLoading').modal({ backdrop: 'static', keyboard: false });  
            window.addEventListener('resize',function(){
                myChart.resize();
            });
@@ -192,6 +191,4 @@
 </script>
 <script src="{{ asset('vendor/echarts/echarts.min.js')}}"></script>
 <script src="{{ asset('js/efficiency.js')}}"></script>
-{{-- <script src="{{ asset('js/andon.js')}}"></script>
-<script src="{{ asset('js/andon5.js')}}"></script> --}}
 @endsection
