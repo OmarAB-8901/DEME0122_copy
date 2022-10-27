@@ -108,7 +108,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 form-control-label" for="text-input">Modelo</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="name" placeholder="Nombre de Modelo" maxlength="30" required>
+                                    <input type="text" class="form-control" name="name" placeholder="Modelo" maxlength="30" required>
                                 </div>
                             </div>
                             <div class="form-group row">

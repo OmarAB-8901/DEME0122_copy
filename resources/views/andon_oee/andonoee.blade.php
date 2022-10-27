@@ -35,7 +35,7 @@
                                 <!-- Default Card Example -->
                                 <div class="card shadow mb-4" style="border-color:#84329B">
                                     <div class="card-header py-3" style="background-color:#008f39;border-color:#008f39">
-                                        <h4 class="m-0 font-weight-bold" style="text-align:center;color:white;">Productividad</h4>
+                                        <h4 class="m-0 font-weight-bold" style="text-align:center;color:white;">Eficiencia</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
