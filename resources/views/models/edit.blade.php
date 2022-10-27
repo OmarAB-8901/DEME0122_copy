@@ -27,7 +27,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-md-3 form-control-label" for="text-input">Valor Std</label>
                                                     <div class="col-md-9">
-                                                        <input type="number" class="form-control" name="valor_std" placeholder="Valor Std" value="{{$var['valor_std']}}" maxlength="30" required>
+                                                        <input type="number" class="form-control" name="valor_std" placeholder="Valor Std" value="{{$var['valor_std']}}" maxlength="30" step="any" required>
                                                     </div>
                                                   </div> 
                       

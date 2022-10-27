@@ -22,9 +22,7 @@
                       <th>Opciones</th>
                       <th>Orden de Trabajo</th>
                       <th>Modelo</th>
-                      <th>Línea</th>
-                      <th>Lote</th>
-                      <th>Pzs X Hora</th>   
+                      <th>Lote</th>  
                       <th>Plan</th>          
                       <th>Estado</th>
                     </tr>
@@ -36,14 +34,14 @@
                         <button data-toggle="modal" title="Editar" data-target="#myModalEdit{{$var['id']}}" type="button" class="btn btn-primary2 btn-circle btn-sm">
                         <img src="{{ asset('img/icono_editar_actualizar.png')}}" height="30">
                         </button> &nbsp;
-                        @include('parts.edit')
+                        @include('planes.edit')
 
 
                         @if($var['condicion']==1)
                           <button type="button"  title="Desactivar" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#myModalDesactivar{{$var['id']}}">
                             <img src="{{ asset('img/icono_cambiar_eliminar.png')}}" height="30">
                           </button>
-                          @include('parts.delete')
+                          @include('planes.delete')
                         @else
                             <button type="button"  title="Activar" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#myModalActivar{{$var['id']}}">
                                 <i class="fas fa-check"></i>
@@ -51,11 +49,9 @@
                             @include('parts.activar')
                         @endif
                      </td>
-                     <td>{{$var['orden_trabajo']}}</td>
-                     <td>{{$var['modelo']}}</td>
-                     <td>{{$var['name_machine']}}</td>
-                     <td>{{$var['lote']}}</td>
-                     <td>{{$var['ict']}}</td>
+                     <td>{{$var['work_order']}}</td>
+                     <td>{{$var['name']}}</td>
+                     <td>{{$var['lotId']}}</td>
                      <td>{{$var['plan']}}</td>
                      <td>
                        @if($var['condicion']==1)
@@ -105,31 +101,12 @@
                                   </select>
                               </div>
                           </div>
-                          <div class="form-group row">
-                            <label class="col-md-3 form-control-label" for="text-input">Línea</label>
-                            <div class="col-md-9">
-                                <select class="form-control" name="idmachine" required>
-                                    <option value="" disabled selected>Seleccione</option>
-                                    @foreach($machines as $machine)
-                                    <option value="{{$machine['id']}}">{{$machine['name']}} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
                             <div class="form-group row">
                               <label class="col-md-3 form-control-label" for="text-input">Lote</label>
                               <div class="col-md-9">
                                   <input type="text" class="form-control" name="lote" placeholder="Lote" maxlength="30" required>
                               </div>
-                            </div>  
-
-                            <div class="form-group row">
-                              <label class="col-md-3 form-control-label" for="text-input">Pzs x Hora</label>
-                              <div class="col-md-9">
-                                  <input type="number" class="form-control" name="ict" placeholder="Pzs x Hora" maxlength="30" required>
-                              </div>
-                            </div>
-                            
+                            </div> 
                             <div class="form-group row">
                               <label class="col-md-3 form-control-label" for="text-input">Plan</label>
                               <div class="col-md-9">

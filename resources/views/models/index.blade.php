@@ -56,19 +56,19 @@
                         <button data-toggle="modal" title="Editar" data-target="#myModalEdit{{$var['id']}}" type="button" class="btn btn-primary2 btn-circle btn-sm">
                         <img src="{{ asset('img/icono_editar_actualizar.png')}}" height="30">
                         </button> &nbsp;
-                        @include('parts.edit')
+                        @include('models.edit')
 
 
                         @if($var['condicion']==1)
                           <button type="button"  title="Desactivar" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#myModalDesactivar{{$var['id']}}">
                             <img src="{{ asset('img/icono_cambiar_eliminar.png')}}" height="30">
                           </button>
-                          @include('parts.delete')
+                          @include('models.delete')
                         @else
                             <button type="button"  title="Activar" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#myModalActivar{{$var['id']}}">
                                 <i class="fas fa-check"></i>
                             </button>
-                            @include('parts.activar')
+                            @include('models.activar')
                         @endif
                      </td>
                      <td>{{$var['name']}}</td>
@@ -121,9 +121,20 @@
                             <div class="form-group row">
                               <label class="col-md-3 form-control-label" for="text-input">Valor Std</label>
                               <div class="col-md-9">
-                                  <input type="number" class="form-control" name="valor_std" placeholder="Valor Std" maxlength="30" required>
+                                  <input type="number" class="form-control" name="valor_std" placeholder="Valor Std" maxlength="30" step="any" required>
                               </div>
                             </div> 
+                            <div class="form-group row">
+                              <label class="col-md-3 form-control-label" for="text-input">Línea</label>
+                              <div class="col-md-9">
+                                  <select class="form-control" name="idmachine" required>
+                                      <option value="" disabled selected>Seleccione</option>
+                                      @foreach($machines as $machine)
+                                      <option value="{{$machine['id']}}">{{$machine['name']}} </option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                            </div>
 
                             <div  class="form-group row div-error">
                                 <div class="text-center text-error">

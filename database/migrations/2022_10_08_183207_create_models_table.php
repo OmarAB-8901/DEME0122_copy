@@ -17,9 +17,12 @@ class CreateModelsTable extends Migration
             $table->increments('id');
             $table->string('name', 60);
             $table->string('description', 100);
-            $table->integer('valor_std');
+            $table->double('valor_std', 8, 5);
+            $table->integer('idmachine')->unsigned();
             $table->boolean('condicion')->default(1);
             $table->timestamps();
+
+            $table->foreign('idmachine')->references('id')->on('machines');
         });
     }
 

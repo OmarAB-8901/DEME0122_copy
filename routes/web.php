@@ -19,9 +19,9 @@ use App\Exports\EventsExport;
 Auth::routes();
 
 
-Route::get('/andon/oee', 'AndonOEEController@index')->name('andonoee');
-Route::get('/andon/event', 'AndonEventController@index')->name('andonevent');
-Route::get('/andon/score', 'AndonScorecardController@index')->name('andonscore');
+Route::get('/andon/oee/{idmachine}', 'AndonOEEController@index')->name('andonoee');
+Route::get('/andon/event/{idmachine}', 'AndonEventController@index')->name('andonevent');
+Route::get('/andon/score/{idmachine}', 'AndonScorecardController@index')->name('andonscore');
 
 Route::group(['middleware'=>['auth']],function(){
 

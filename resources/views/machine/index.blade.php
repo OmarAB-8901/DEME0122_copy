@@ -5,7 +5,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Máquinas
+              <h6 class="m-0 font-weight-bold text-primary">Líneas
               <button  data-toggle="modal" data-target="#myModalNuevo" class="btn btn-success btn-icon-split btn-sm">
                     <span class="text">Nuevo</span>
                     <span class="icon text-white-50">
@@ -98,7 +98,7 @@
             <div class="modal-dialog modal-primary modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" style="color:rgb(0,51,100)">Nueva Máquina</h4>
+                        <h4 class="modal-title" style="color:rgb(0,51,100)">Nueva Línea</h4>
                         <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>

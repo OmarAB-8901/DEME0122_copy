@@ -6,7 +6,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3" style="background-color:rgb(250,250,250);border-color:rgb(250,250,250)">
                 @foreach($machines as $machine)
-                <h6 class="m-0 font-weight-bold text-primary" style="color:rgb(0,51,100)">Pareto</h6>
+                <h6 class="m-0 font-weight-bold text-primary" style="color:rgb(0,51,100)">Tiempos Muertos</h6>
                 <input type="hidden" class="form-control" name="var_name" id="var_name" value="{{$machine['name']}}">
                 <input type="hidden" class="form-control" name="idmachine" id="idmachine" value="{{$machine['id']}}">
                 <input type="hidden" class="form-control" name="date" id="date" value="{{$date}}">

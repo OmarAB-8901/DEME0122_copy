@@ -5,7 +5,7 @@
     <div class="col-xl-12 col-lg-7">
         <div class="card shadow mb-4">
             <div class="card-header py-3" style="background-color:rgb(250,250,250);border-color:rgb(250,250,250)">
-                    <h1 class="m-0 font-weight-bold text-primary" style="text-align:center">Andon</h1>
+                    <h1 class="m-0 font-weight-light text-primary font-italic display-4" style="text-align:center">Andon</h1>
                     {{-- <input type="date" class="form-control" name="date" id="date" value="{{$date}}">      --}}
             </div>
             <div class="card-body">
@@ -21,7 +21,7 @@
                                                 <select class="form-control" name="parte" required>
                                                     <option value="" disabled selected>Seleccione Orden de Trabajo</option>
                                                     @foreach($planes as $var)
-                                                    <option value="{{$var['id']}}">{{$var['orden_trabajo']}} </option>
+                                                    <option value="{{$var['id']}}">{{$var['work_order']}} </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
 
                         <!-- Default Card Example -->
                         <div class="card shadow mb-4" style="border-color:#84329B">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-xl-6" style="background-color:rgb(0,161,203);border-color:rgb(0,161,203)">
+                                    <div class="col-xl-6" style="background-color:#008f39;border-color:#008f39">
                                         <center>
                                             <a>
                                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center" id="resQuality">PIEZAS OK</h5>
@@ -93,7 +93,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
 
                        <!-- Default Card Example -->
                        <div class="card shadow mb-4" style="border-color:#84329B">
@@ -101,9 +101,9 @@
                             <h2 class="m-0 font-weight-bold text-primary" style="text-align:center">Eficiencia</h2>
                             </div>
                             <div class="card-body">
-                                <center>
+                                <div class="row">
                                     <div class="echarts" id="chart-panel" style="width: 500px; height: 250px;"></div>
-                                </center>
+                                </div>
                             </div>
                         </div>
 
@@ -126,17 +126,14 @@
                                     <div class="col-xl-2">
                                         <button type="submit" class="btn btn-primary" style="background-color:red">MATERIALES</button>
                                     </div>
-                                    <div class="col-xl-1">
+                                    <div class="col-xl-2">
                                         <button type="submit" class="btn btn-primary" style="background-color:rgb(128, 128, 128)">PERSONAL</button>
                                     </div>
                                     <div class="col-xl-2">
-                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(84, 135, 155)">VALIDACIONES</button>
-                                    </div>
-                                    <div class="col-xl-1">
                                         <button type="submit" class="btn btn-primary" style="background-color:rgb(74, 173, 74)">SEP UP</button>
                                     </div>
-                                    <div class="col-xl-1">
-                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(113, 56, 139)">NO PLAN</button>
+                                    <div class="col-xl-2">
+                                        <button type="submit" class="btn btn-primary" style="background-color:rgb(113, 56, 139)">OTROS</button>
                                     </div>
                                 </div> 
                             </div>
@@ -147,7 +144,7 @@
                     <div class="col-lg-12">
                         <div class="card shadow mb-4" style="border-color:#84329B">
                             <div class="card-header py-3"> 
-                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center">Scrap</h5>
+                                <h5 class="m-0 font-weight-bold text-primary" style="text-align:center">Defectos</h5>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -180,8 +177,15 @@
 </div>
 @endsection
 @section('scripts')
+<script>
+    $(document).ready(function()
+       {
+           window.addEventListener('resize',function(){
+               myChart.resize();
+           });
+      });
+   
+</script>
 <script src="{{ asset('vendor/echarts/echarts.min.js')}}"></script>
 <script src="{{ asset('js/efficiency.js')}}"></script>
-{{-- <script src="{{ asset('js/andon.js')}}"></script>
-<script src="{{ asset('js/andon5.js')}}"></script> --}}
 @endsection

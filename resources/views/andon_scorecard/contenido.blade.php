@@ -33,25 +33,12 @@
             <div id="content">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                  <img src="{{asset('img/Devicor-Medical-Products.png')}}" alt="" height="40">
+                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
+                        <div class="sidebar-brand-icon">
+                            <img src="{{asset('img/Mammotome.png')}}" alt="" height="50">
+                        </div>
+                    </a>
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - User Information -->
-                        {{-- <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{asset('img/icono_usuario.png')}}" alt="" height="25">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="color:rgb(0,51,100)" > {{ Auth::user()->name }}</span>
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Cerrar Sesión
-                                </a>
-                            </div>
-                        </li> --}}
-                    </ul>
 
                 </nav>
                 <!-- End of Topbar -->

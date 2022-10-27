@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models;
 use App\HabSensores;
+use App\Machine;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -12,11 +13,15 @@ class ModelsController extends Controller
 {
     public function index(Request $request)
     {
-            $models = Models::select('id','name','description','valor_std','condicion')->orderBy('name', 'asc')->get();
+            $models = Models::join('machines','models.idmachine','=','machines.id')
+            ->select('models.id','models.name','description','valor_std','models.idmachine','machines.name as name_machine','models.condicion')->orderBy('models.name', 'asc')->get();
 
             $hab_sensor = HabSensores::select('id','conteo_pzs')->get();
+
+            $machines = Machine::where('condicion','=','1')
+            ->select('id','name')->orderBy('name', 'asc')->get();
      
-        return view('models.index')->with(compact('models','hab_sensor'));
+        return view('models.index')->with(compact('models','hab_sensor','machines'));
     }
     
     public function store(Request $request)
@@ -25,6 +30,7 @@ class ModelsController extends Controller
         $models->name = $request->name;
         $models->description = $request->description;
         $models->valor_std= $request->valor_std;
+        $models->idmachine = $request->idmachine;
         $models->condicion = '1';
         $models->save();
         return Redirect::to('/models');
@@ -35,6 +41,7 @@ class ModelsController extends Controller
         $models->name = $request->name;
         $models->description = $request->description;
         $models->valor_std= $request->valor_std;
+        $models->idmachine = $request->idmachine;
         $models->condicion = '1';
         $models->save();
         return Redirect::to('/models');

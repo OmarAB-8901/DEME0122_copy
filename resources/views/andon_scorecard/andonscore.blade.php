@@ -5,8 +5,13 @@
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3" style="background-color:rgb(250,250,250);border-color:rgb(250,250,250)">
-                    <h1 class="m-0 font-weight-bold text-primary" style="text-align:center">SCORECARD</h1>
-                    {{-- <input type="date" class="form-control" name="date" id="date" value="{{$date}}">      --}}
+                    
+                @foreach($machines as $machine)
+                    <h1 class="m-0 font-weight-bold text-primary" style="text-align:center">SCORECARD {{$machine['name']}}</h1>     
+                    <input type="hidden" class="form-control" name="var_name" id="var_name" value="{{$machine['name']}}">
+                    <input type="hidden" class="form-control" name="idmachine" id="idmachine" value="{{$machine['id']}}">
+                    <input type="hidden" class="form-control" name="date" id="date" value="{{$date}}">
+                @endforeach
             </div>
             <div class="card-body">
                 <div class="table-responsive">
