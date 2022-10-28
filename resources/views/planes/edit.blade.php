@@ -15,7 +15,7 @@
                                                     <label class="col-md-3 form-control-label" for="text-input">Orden  de Trabajo</label>
                                                     <div class="col-md-9">
                                                         <input type="hidden" class="form-control" name="id"  value="{{$var['id']}}" required> 
-                                                        <input type="text" class="form-control" name="orden_trabajo" placeholder="Orden de trabajo" value="{{$var['order_trabajo']}}" maxlength="40" required>
+                                                        <input type="text" class="form-control" name="orden_trabajo" placeholder="Orden de trabajo" value="{{$var['work_order']}}" maxlength="40" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">

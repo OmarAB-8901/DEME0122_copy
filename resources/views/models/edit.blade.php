@@ -29,13 +29,6 @@
                                                     <div class="col-md-9">
                                                         <input type="number" class="form-control" name="valor_std" placeholder="Valor Std" value="{{$var['valor_std']}}" maxlength="30" step="any" required>
                                                     </div>
-                                                  </div> 
-                      
-                                                <div class="form-group row">
-                                                    <label class="col-md-3 form-control-label" for="text-input">Plan</label>
-                                                    <div class="col-md-9">
-                                                        <input type="number" class="form-control" name="plan" placeholder="Plan" value="{{$var['plan']}}" maxlength="30" required>
-                                                    </div>
                                                 </div> 
                                         </div>
                                         <div class="modal-footer">
