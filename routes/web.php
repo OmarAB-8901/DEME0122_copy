@@ -119,6 +119,8 @@ Route::group(['middleware'=>['auth']],function(){
 
     Route::group(['middleware' => ['Lider']], function () {
         Route::get('/button/andon', 'AndonController@index')->name('andomb');
+
+        Route::post('/button/andon/workorder', 'AndonController@const_work_order')->name('const_work_order');
     });
 
      

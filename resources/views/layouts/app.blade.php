@@ -18,6 +18,7 @@
     
     <!-- Styles -->
     <link href="{{ asset('css/fuentes.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/boton3d.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css" />
