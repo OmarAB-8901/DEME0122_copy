@@ -55,7 +55,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('s_registrar')}}" role="form" method="post"  class="form-horizontal">
+                        <form action="{{route('r_registrar')}}" role="form" method="post"  class="form-horizontal">
                            {{ csrf_field() }}
                             <div class="form-group row">
                                 <label class="col-md-3 form-control-label" for="text-input">Nombre</label>

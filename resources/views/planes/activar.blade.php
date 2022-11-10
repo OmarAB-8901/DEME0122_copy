@@ -12,7 +12,7 @@
                                             <form action="{{route('pl_activar')}}" role="form" method="post"  class="form-horizontal">
                                             {{ csrf_field() }} {{method_field('PUT')}}
                                                 <div class="form-group row">
-                                                Esta seguro de activar esta parte?
+                                                Esta seguro de activar esta orden de trabajo?
                                                     <div class="col-md-9">
                                                         <input type="hidden" class="form-control" name="id"  value="{{$var['id']}}" required> 
                                                     </div>

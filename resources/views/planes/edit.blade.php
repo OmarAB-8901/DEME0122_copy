@@ -3,7 +3,7 @@
                                 <div class="modal-dialog modal-primary modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" style="color:rgb(0,51,100)">Actualizar Parte</h4>
+                                            <h4 class="modal-title" style="color:rgb(0,51,100)">Actualizar Plan de Producción</h4>
                                             <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
