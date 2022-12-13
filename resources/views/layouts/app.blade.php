@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('img/sinci.ico')}}">
 
 
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -17,12 +18,13 @@
     
     
     <!-- Styles -->
-    <link href="{{ asset('css/fuentes.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/boton3d.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fuentes.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/engine.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('vendor/sweetalert/sweetalert2.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 </head>
 <body id="page-top">
@@ -33,15 +35,15 @@
         @if (Auth::user()->hasRole('Lider'))
         @elseif (Auth::user()->idgroup==1)
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul class="navbar-nav gradient-primary  sidebar sidebar-dark accordion" id="accordionSidebar">
 
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-                    <div class="sidebar-brand-icon">
-                    <img src="{{ asset('img/Mammotome.png')}}" height="50">
+                <!-- Sidebar - Brand  gradient-primary-->
+                <a class="d-flex align-items-center justify-content-center" href="{{route('home')}}">
+                    <div class="sidebar-brand-icon bg-white">
+                    <img  class="bg-white" src="{{ asset('img/Mammotome.png')}}" height="50">
                     </div>
                 </a>
-
+                
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
                 @if(Auth::check())
@@ -75,7 +77,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light  bg-devicor topbar mb-4 static-top shadow">
                     @if (Auth::user()->hasRole('Lider'))
                         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
                             <div class="sidebar-brand-icon">
@@ -85,7 +87,7 @@
                     @endif
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto ">
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -126,9 +128,9 @@
             <footer class="sticky-footer">
                 <div class="container my-auto">
                     <p class="elementor-heading-title elementor-size-default">&copy; {{ date("Y") }} Devicor Medical Products, Inc.</p>
-                    <div class="copyright text-center my-auto">
+                    <!--div class="copyright text-center my-auto">
                         <span><img src="{{ asset('img/Logo_Sinci_Simplificada.png')}}" height="20"></span>
-                    </div>
+                    </!--div>
                 </div>
             </footer> 
             <!-- End of Footer -->

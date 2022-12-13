@@ -16,9 +16,9 @@ class OeeController extends Controller
     {
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
-        $caso = "d";
+        $caso = "d";                                            //Por defectoes por día
 
-        $machines = Machine::where('id','=', $idmachine)
+        $machines = Machine::where('id','=', $idmachine)        //Del modelo machine seleccione el identificador y el nombre
            ->select('id','name')->orderBy('name', 'asc')->get();
         
        
@@ -31,9 +31,9 @@ class OeeController extends Controller
                 $idShift=1;
             }
             
-            $DB_SP = "call";
-            $DB_SP_START= "(";
-            $DB_SP_END= ")";
+            $DB_SP = "EXECUTE";
+            $DB_SP_START= "";
+            $DB_SP_END= "";
             
             $idgroup = auth()->user()->idgroup;
             $oee = DB::select($DB_SP.' ConsultaOEETrends '.$DB_SP_START.'?,?,?,?,?,?,?'.$DB_SP_END,array($caso,$idmachine,$date,$casoS,$partId,$lotId,$idShift));

@@ -6,7 +6,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3" style="background-color:rgb(250,250,250);border-color:rgb(250,250,250)">
                 @foreach($machines as $machine)
-                    <h2 class="m-0 font-weight-bold text-primary" style="text-align:center">{{$machine['name']}} Real Time</h2>
+                    <h2 class="m-0 font-weight-bold text-primary bg-devicor" style="text-align:center">{{$machine['name']}} Real Time</h2>
                     <input type="hidden" class="form-control" name="var_name" id="var_name" value="{{$machine['name']}}">
                     <input type="hidden" class="form-control" name="idmachine" id="idmachine" value="{{$machine['id']}}">
                     <input type="hidden" class="form-control" name="date" id="date" value="{{$date}}">

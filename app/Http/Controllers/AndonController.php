@@ -8,10 +8,13 @@ use Carbon\Carbon;
 use App\Machine;
 use App\Planes;
 use App\Groups;
+use DB;
+
+
 
 class AndonController extends Controller
 {
-    public function index(Request $request)
+    public function index($param1)
     {
         $date = Carbon::now();
         $date = $date->format('Y-m-d');
@@ -30,8 +33,9 @@ class AndonController extends Controller
 
         $piezas_ok = 0;
         $piezas_scrap = 0;
-        
-        return view('graphics.button')->with(compact('planes','groups','work_order','piezas_ok','piezas_scrap'));
+        $linea=Machine::where('id','=',$param1)
+        ->select('name','id')->get();
+        return view('graphics.button')->with(compact('planes','groups','work_order','piezas_ok','piezas_scrap','linea'));
     }
 
 
@@ -52,6 +56,41 @@ class AndonController extends Controller
         
         return view('graphics.button')->with(compact('work_order','planes', 'piezas_ok','piezas_scrap'));
     }
+
+   
+        /*Consulta del organigrama de atención en el sistema */
+        public function ConsultaOrgCharts($param1,$param2,$param3){  
+                $DB_SP = "EXECUTE";
+                $DB_SP_START= "";
+                $DB_SP_END= "";        
+                $orgchart1 = DB::select($DB_SP.' ConsultaOrgCharts '.$DB_SP_START.'?,?,?'.$DB_SP_END,array($param1,$param2,$param3));        
+                return array ($orgchart1);
+                /*  http://127.0.0.1:8000/button/andon/orgchart/1/1/1
+                    DB: execute ConsultaOrgCharts 1/1/1 */
+        }
+
+        public function ConsultaInfoAndon($param1,$param2,$param3)        {  
+                $DB_SP = "EXECUTE";
+                $DB_SP_START= "";
+                $DB_SP_END= "";        
+                $orgchart = DB::select($DB_SP.' ConsultaInfoAndon '.$DB_SP_START.'?,?,?'.$DB_SP_END,array($param1,$param2,$param3));        
+                return array ($orgchart);
+                /*  http://127.0.0.1:8000/button/andon/orgchart/1/1/1
+                    DB: execute ConsultaOrgCharts 1/1/1 */        
+                }
+
+        public function ConsultaEstaciones($param1,$param2,$param3){
+                $DB_SP = "EXECUTE";
+                $DB_SP_START= "";
+                $DB_SP_END= "";        
+                $orgchart = DB::select($DB_SP.' ConsultaInfoEstacion '.$DB_SP_START.'?,?,?'.$DB_SP_END,array($param1,$param2,$param3));        
+                return array ($orgchart);
+                /*  http://127.0.0.1:8000/button/andon/orgchart/1/1/1
+                    DB: execute ConsultaOrgCharts 1/1/1 */       
+
+                }    
+
+   
 
     
 }

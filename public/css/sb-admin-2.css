@@ -6207,6 +6207,41 @@ a.close.disabled {
   background-color: #4e73df !important;
 }
 
+.bg-devicor{
+  background-color: #732282 !important;
+  
+}
+
+.bg-devicorinfo{
+
+  background-color: #852796 !important;
+}
+
+
+.bg-devicorgray{
+  background-color: #434B4D !important;
+  
+}
+
+.bg-devicorgold{
+  background-color: #FFD700 !important;
+}
+
+.bg-devicorsilver{
+  background-color:  linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%) !important;
+}
+
+.bg-devicorgraygreen{
+  background-color: #238677 !important;
+}
+
+.bg-devicorblue{
+  background-color: #0f004b !important;
+}
+
+
+
+
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {

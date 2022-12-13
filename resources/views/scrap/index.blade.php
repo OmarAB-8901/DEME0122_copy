@@ -21,7 +21,7 @@
                     <tr>
                       
                       <th>Opciones</th>
-                      <th>Identificador</th>
+                      <th>Codigo</th>
                       <th>Nombre</th>
                       <th>Descripción</th>
                       <th>Estado</th>
