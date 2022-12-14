@@ -1,5 +1,5 @@
-@extends('layouts.app') 
-@section('contenido')
+@extends('andon_lider.contenido') 
+@section('andonlider')
 
     <div class="container-fluid" id="principal">
         <!--Declaracion de variables-->

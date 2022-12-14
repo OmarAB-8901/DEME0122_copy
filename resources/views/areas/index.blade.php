@@ -5,7 +5,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Plan de producción
+              <h6 class="m-0 font-weight-bold text-primary">Catálogo de Áreas
               <button  data-toggle="modal" data-target="#myModalNuevo" class="btn btn-success btn-icon-split btn-sm">
                     <span class="text">Nuevo</span>
                     <span class="icon text-white-50">
@@ -15,46 +15,45 @@
               </h6>
             </div>
             <div class="card-body">
+              <hr class="sidebar-divider">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Opciones</th>
-                      <th>Orden de Trabajo</th>
-                      <th>Modelo</th>
-                      <th>Lote</th>  
-                      <th>Plan</th>          
+                      <th>Posición</th>
+                      <th>Áreas</th>
+                      <th>Línea</th>          
                       <th>Estado</th>
                     </tr>
                   </thead>
                   <tbody>
-                   @foreach($planes as $var)   
+                   @foreach($areas as $var)   
                     <tr>
                      <td>
                         <button data-toggle="modal" title="Editar" data-target="#myModalEdit{{$var['id']}}" type="button" class="btn btn-primary2 btn-circle btn-sm">
                         <img src="{{ asset('img/icono_editar_actualizar.png')}}" height="30">
                         </button> &nbsp;
-                        @include('planes.edit')
+                        @include('areas.edit')
 
 
-                        @if($var['condicion']==1)
+                        @if($var['condition']==1)
                           <button type="button"  title="Desactivar" class="btn btn-circle btn-sm" data-toggle="modal" data-target="#myModalDesactivar{{$var['id']}}">
                             <img src="{{ asset('img/icono_cambiar_eliminar.png')}}" height="30">
                           </button>
-                          @include('planes.delete')
+                          @include('areas.delete')
                         @else
                             <button type="button"  title="Activar" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#myModalActivar{{$var['id']}}">
                                 <i class="fas fa-check"></i>
                             </button>
-                            @include('parts.activar')
+                            @include('areas.activar')
                         @endif
                      </td>
-                     <td>{{$var['work_order']}}</td>
-                     <td>{{$var['name']}}</td>
-                     <td>{{$var['lotId']}}</td>
-                     <td>{{$var['plan']}}</td>
+                     <td>{{$var['pos']}}</td>
+                     <td>{{$var['namearea']}}</td>
+                     <td>{{$var['idmachines']}}</td>
                      <td>
-                       @if($var['condicion']==1)
+                       @if($var['condition']==1)
                          <div>
                             <span class="badge badge-success">Activo</span>
                          </div>
@@ -76,43 +75,31 @@
             <div class="modal-dialog modal-primary modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" style="color:rgb(0,51,100)">Nuevo Plan de Producción</h4>
+                        <h4 class="modal-title" style="color:rgb(0,51,100)">Nuevo Modelo</h4>
                         <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('pl_registrar')}}" role="form" method="post"  class="form-horizontal">
+                        <form action="{{route('ar_registrar')}}" role="form" method="post"  class="form-horizontal">
                            {{ csrf_field() }}
                             <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="text-input">Orden Trabajo</label>
+                                <label class="col-md-3 form-control-label" for="text-input">ÁREA</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="orden_trabajo" placeholder="Orden Trabajo" maxlength="30" required>
+                                    <input type="text" class="form-control" name="name" placeholder="ÁREA" maxlength="30" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                              <label class="col-md-3 form-control-label" for="text-input">Modelo</label>
+                              <label class="col-md-3 form-control-label" for="text-input">Línea</label>
                               <div class="col-md-9">
-                                  <select class="form-control" name="model" required>
+                                  <select class="form-control" name="idmachine" required>
                                       <option value="" disabled selected>Seleccione</option>
-                                      @foreach($models as $model)
-                                      <option value="{{$model['id']}}">{{$model['name']}} </option>
+                                      @foreach($machines as $machine)
+                                      <option value="{{$machine['id']}}">{{$machine['name']}} </option>
                                       @endforeach
                                   </select>
                               </div>
-                          </div>
-                            <div class="form-group row">
-                              <label class="col-md-3 form-control-label" for="text-input">Lote</label>
-                              <div class="col-md-9">
-                                  <input type="text" class="form-control" name="lote" placeholder="Lote" maxlength="30" required>
-                              </div>
-                            </div> 
-                            <div class="form-group row">
-                              <label class="col-md-3 form-control-label" for="text-input">Plan</label>
-                              <div class="col-md-9">
-                                  <input type="number" class="form-control" name="plan" placeholder="Plan" maxlength="30" required>
-                              </div>
-                            </div> 
+                            </div>
 
                             <div  class="form-group row div-error">
                                 <div class="text-center text-error">

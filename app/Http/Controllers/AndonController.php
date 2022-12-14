@@ -35,7 +35,7 @@ class AndonController extends Controller
         $piezas_scrap = 0;
         $linea=Machine::where('id','=',$param1)
         ->select('name','id')->get();
-        return view('graphics.button')->with(compact('planes','groups','work_order','piezas_ok','piezas_scrap','linea'));
+        return view('andon_lider.button')->with(compact('planes','groups','work_order','piezas_ok','piezas_scrap','linea'));
     }
 
 
@@ -54,7 +54,7 @@ class AndonController extends Controller
         $piezas_scrap = 0;
 
         
-        return view('graphics.button')->with(compact('work_order','planes', 'piezas_ok','piezas_scrap'));
+        return view('andon_lider.button')->with(compact('work_order','planes', 'piezas_ok','piezas_scrap'));
     }
 
    
