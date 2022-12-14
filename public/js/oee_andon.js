@@ -55,6 +55,12 @@ var option_cal;
 var option_dis;
 var option_prod;
 
+var red='#fd0000';
+var green='#008000';
+var font=25;
+var font2=font-5;
+var fontdata=30;
+var fontdata2=fontdata-10;
 option_oee = {
   series: [
     {
@@ -63,8 +69,8 @@ option_oee = {
         lineStyle: {
           width: 10,
           color: [
-            [0.95, '#fd666d'],
-            [1, '#008f39']
+            [0.95, red],
+            [1, green]
           ]
         }
       },
@@ -92,11 +98,11 @@ option_oee = {
       axisLabel: {
         color: 'auto',
         distance: 5,
-        fontSize: 15
+        fontSize: font
       },
       detail: {
         valueAnimation: true,
-        fontSize: 30,
+        fontSize: fontdata,
         formatter: '{value} %',
         color: 'auto'
       },
@@ -117,8 +123,8 @@ option_cal = {
         lineStyle: {
           width: 10,
           color: [
-            [0.99, '#fd666d'],
-            [1, '#008f39']
+            [0.99, red],
+            [1, green]
           ]
         }
       },
@@ -146,11 +152,11 @@ option_cal = {
       axisLabel: {
         color: 'auto',
         distance: 5,
-        fontSize: 10
+        fontSize: font-2
       },
       detail: {
         valueAnimation: true,
-        fontSize: 20,
+        fontSize: fontdata2,
         formatter: '{value} %',
         color: 'auto'
       },
@@ -171,8 +177,8 @@ option_dis = {
         lineStyle: {
           width: 10,
           color: [
-            [0.95, '#fd666d'],
-            [1, '#008f39']
+            [0.95, red],
+            [1, green]
           ]
         }
       },
@@ -200,11 +206,11 @@ option_dis = {
       axisLabel: {
         color: 'auto',
         distance: 5,
-        fontSize: 10
+        fontSize: font2
       },
       detail: {
         valueAnimation: true,
-        fontSize: 20,
+        fontSize: fontdata2,
         formatter: '{value} %',
         color: 'auto'
       },
@@ -225,8 +231,8 @@ option_prod = {
         lineStyle: {
           width: 10,
           color: [
-            [0.95, '#fd666d'],
-            [1, '#008f39']
+            [0.95, red],
+            [1, green]
           ]
         }
       },
@@ -254,11 +260,11 @@ option_prod = {
       axisLabel: {
         color: 'auto',
         distance: 5,
-        fontSize: 10
+        fontSize: font2
       },
       detail: {
         valueAnimation: true,
-        fontSize: 20,
+        fontSize: fontdata2,
         formatter: '{value} %',
         color: 'auto'
       },

@@ -22,4 +22,15 @@ class AndonOEEController extends Controller
         
         return view('andon_oee.andonoee')->with(compact('date','machines'));
     }
+
+    public function consultaoee($param1,$param2,$param3){
+        $DB_SP = "EXECUTE";
+        $DB_SP_START= "";
+        $DB_SP_END= "";        
+        $orgchart = DB::select($DB_SP.' sp_oee '.$DB_SP_START.'?,?,?'.$DB_SP_END,array($param1,$param2,$param3));        
+        return array ($orgchart);
+        
+
+        }    
+
 }

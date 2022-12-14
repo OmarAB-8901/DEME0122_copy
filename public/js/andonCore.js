@@ -51,7 +51,7 @@ async function f_ListenPLC(){
             try { 
                 
                 var tag = JSON.stringify({tag: "ns=3;s=["+urlSend.namePLC+"]linea_entradas_andon["+ lineData.id +"].sol_lider", type: "Int32"});            
-                var solLider = 0//await fetch(urlSend.urlPLC+urlSend.urlPLCrd+tag, headers).then(response => response.json()).then(data => data.data);            
+                var solLider = 1//await fetch(urlSend.urlPLC+urlSend.urlPLCrd+tag, headers).then(response => response.json()).then(data => data.data);            
                 
                 
                 if (solLider == 1 && lineData.solstation ==0 ){              

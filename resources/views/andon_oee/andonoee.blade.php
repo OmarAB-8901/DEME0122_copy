@@ -4,9 +4,9 @@
 <div class="row">
     <div class="col-xl-12 col-lg-7">
         <div class="card shadow mb-4">
-            <div class="card-header py-3" style="background-color:rgb(250,250,250);border-color:rgb(250,250,250)">
+            <div class="card-header " style="card-header py-3 bg-devicor rounded">
                 @foreach($machines as $machine)
-                    <h2 class="m-0 font-weight-bold text-primary bg-devicor" style="text-align:center">{{$machine['name']}} Real Time</h2>
+                    <h2 class="m-0  text-devicor" style="text-align:center">{{$machine['name']}} Real Time</h2>
                     <input type="hidden" class="form-control" name="var_name" id="var_name" value="{{$machine['name']}}">
                     <input type="hidden" class="form-control" name="idmachine" id="idmachine" value="{{$machine['id']}}">
                     <input type="hidden" class="form-control" name="date" id="date" value="{{$date}}">
@@ -47,7 +47,7 @@
                             <div class="col-lg-4">
                                 <!-- Default Card Example -->
                                 <div class="card shadow mb-4" style="border-color:#84329B">
-                                    <div class="card-header py-3" style="background-color:#fd666d;border-color:#fd666d">
+                                    <div class="card-header py-3" style="background-color:#fd0000;border-color:#fd666d">
                                         <h4 class="m-0 font-weight-bold" style="text-align:center;color:white;">Calidad</h4>
                                     </div>
                                     <div class="card-body">

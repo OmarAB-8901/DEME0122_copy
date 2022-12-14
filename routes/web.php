@@ -20,8 +20,11 @@ Auth::routes();
 
 
 Route::get('/andon/oee/{idmachine}', 'AndonOEEController@index')->name('andonoee');
+Route::get('/andon/OEE/{param1}/{param2}/{param3}', 'AndonOEEController@consultaoee')->name('andonsoee');
 Route::get('/andon/event/{idmachine}', 'AndonEventController@index')->name('andonevent');
 Route::get('/andon/score/{idmachine}', 'AndonScorecardController@index')->name('andonscore');
+
+ 
 
 Route::group(['middleware'=>['auth']],function(){
 
@@ -119,12 +122,12 @@ Route::group(['middleware'=>['auth']],function(){
     });
 
             Route::group (['middleware' => ['Lider']], function () {
-            Route::get      ('/button/andon/{param1}',                                      'AndonController@index')->name('andomb');
-            Route::post     ('/button/andon/workorder/',                                    'AndonController@const_work_order')->name('const_work_order');
-            Route::get      ('/button/andon/orgchart/{param1}/{param2}/{param3}',           'AndonController@ConsultaOrgCharts')->name('org_chart');
-            Route::get      ('/button/andon/coninfoandon/{param1}/{param2}/{param3}',       'AndonController@ConsultaInfoAndon')->name('con_info_andon');
-            Route::get      ('/button/andon/coninfoestacion/{param1}/{param2}/{param3}',    'AndonController@ConsultaEstaciones')->name('con_info_estacion');    
-
+                Route::get      ('/button/andon/{param1}',                                      'AndonController@index')->name('andomb');
+                Route::post     ('/button/andon/workorder/',                                    'AndonController@const_work_order')->name('const_work_order');
+                Route::get      ('/button/andon/orgchart/{param1}/{param2}/{param3}',           'AndonController@ConsultaOrgCharts')->name('org_chart');
+                Route::get      ('/button/andon/coninfoandon/{param1}/{param2}/{param3}',       'AndonController@ConsultaInfoAndon')->name('con_info_andon');
+                Route::get      ('/button/andon/coninfoestacion/{param1}/{param2}/{param3}',    'AndonController@ConsultaEstaciones')->name('con_info_estacion');   
+            
         });
 
      

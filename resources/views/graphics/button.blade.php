@@ -59,7 +59,13 @@
                             </tr>
                             <tr> 
                                 <td>Captura de defectos:</td>
-                                <td><input type="text" value=""  placeholder="Cantidad..." class="form"></td>
+                                <td><input type="text" value=""  placeholder="Cantidad..." class="form">
+                                
+                                    
+                            </tr>
+                            <tr> 
+                                <td><button id="3003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >Otro</button></td>
+                                <td><button id="7003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">3010</button></td>
                             </tr>
                             <tr> 
                                 <td><button id="3003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >3005</button></td>
