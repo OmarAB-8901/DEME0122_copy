@@ -59,6 +59,8 @@ class Kernel extends HttpKernel
         'Admin' => \App\Http\Middleware\Admin::class,
         'User' => \App\Http\Middleware\User::class,
         'Lider' => \App\Http\Middleware\Lider::class,
+        'Calidad' => \App\Http\Middleware\Calidad::class,
+        'Plan' => \App\Http\Middleware\Plan::class,
         'Andon' => \App\Http\Middleware\Andon::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];

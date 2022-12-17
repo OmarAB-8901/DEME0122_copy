@@ -54,7 +54,6 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">componentes:</h6>
             <a class="collapse-item" href="{{route('group')}}">Grupos</a>
-            <a class="collapse-item" href="{{route('roles')}}">Roles</a>
             <a class="collapse-item" href="{{route('user')}}">Usuarios</a>
         </div>
         </div>

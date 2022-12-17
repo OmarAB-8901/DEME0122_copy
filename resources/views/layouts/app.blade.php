@@ -31,9 +31,6 @@
     
   <!-- Page Wrapper -->
   <div id="wrapper">
-    @if(Auth::check())
-        @if (Auth::user()->hasRole('Lider'))
-        @elseif (Auth::user()->idgroup==1)
             <!-- Sidebar -->
             <ul class="navbar-nav gradient-primary  sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -49,6 +46,10 @@
                 @if(Auth::check())
                         @if (Auth::user()->hasRole('admin'))
                             @include('menu.menuadministrador')
+                        @elseif (Auth::user()->hasRole('calidad'))
+                            @include('menu.menucalidad')
+                        @elseif (Auth::user()->hasRole('plan'))
+                            @include('menu.menuplan')
                         @elseif (Auth::user()->idgroup==1)
                             @include('menu.menuusuario')
                         @endif
@@ -66,9 +67,6 @@
 
             </ul>
             <!-- End of Sidebar -->
-        @endif
-    
-    @endif
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">

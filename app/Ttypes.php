@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Scraps extends Model
+class Ttypes extends Model
 {
-    protected $fillable=[
-        'identifier','name','descripcion','condicion','defaceptados','idgroup'
+     protected $fillable=[
+        'descrip','orden','codigo'
     ];
+
     public function user()
     {
         return $this->hasMany('App\User');
