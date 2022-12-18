@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['user', 'admin','plan','Calidad','Supervisor Mantenimiento','Supervisores de Manufactura','Gerentes de Manufactura','Gerente de Planta']);
+        $request->user()->authorizeRoles(['user', 'admin','plan','calidad','Supervisor Mantenimiento','Supervisores de Manufactura','Gerentes de Manufactura','Gerente de Planta']);
 
         if ($request->user()->hasRole('Lider')) {
             return Redirect::to('/button/andon');

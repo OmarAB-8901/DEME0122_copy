@@ -25,13 +25,23 @@
                   <tbody>
                    @foreach($calidad as $var)   
                     <tr>
-                     <td>{{$var['fecha']->format('d-m-Y')}}</td>
-                     <td>{{$var['hora']->isoFormat('H:mm:ss A');}}</td>
+                     <td>{{date('d-m-Y', strtotime( $var['fecha'] ))}}</td>
+                     <td>{{date('H:m:s A', strtotime( $var['fecha'] ))}}</td>
                      <td>{{$var['descrip']}}</td>
                      <td>{{$var['name']}}</td>
                      <td>{{$var['description']}}</td>
                      <td>{{$var['cantidad']}}</td>
-                     <td>{{$var['isdefect']}}</td>
+                     <td>
+                      @if($var['isdefect']==1)
+                        <div>
+                           <span class="badge badge-success">Sí</span>
+                        </div>
+                        @else
+                       <div>
+                           <span class="badge badge-danger">No</span>
+                       </div>
+                       @endif
+                   </td>
                     </tr>
                   @endforeach
                   </tbody>
