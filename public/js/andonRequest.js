@@ -14,7 +14,7 @@ function f_save_UrlServerAPIs(){
     //Save de URL into local Storage FEME}
     let URLRequest={
             urlTelegram:    "http://10.11.30.126:1880",
-            urlPLC:         "http://10.11.24.233:1880",
+            urlPLC:         "http://10.11.24.92:1880",
             urlServer:      "http://10.11.30.126:1880",
             urlPLCwr:       "/sbl_tags/writeTags",
             urlPLCrd:       "/sbl_tags/readSolLider?data=",
@@ -36,6 +36,7 @@ function getLocalStorage(vlocalStorage){
 var vveriflinea;
 function f_verif_linea(vveriflinea){
      //Se alamacena en el sitema no se requiere paro.
+     //Colocar los componentes del almacenamiento de la linea
      
 }
 

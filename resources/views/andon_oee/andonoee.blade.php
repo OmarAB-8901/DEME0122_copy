@@ -6,7 +6,7 @@
         <div class="card shadow mb-4">
             <div class="card-header " style="card-header py-3 bg-devicor rounded">
                 @foreach($machines as $machine)
-                    <h2 class="m-0  text-devicor" style="text-align:center">{{$machine['name']}} Real Time</h2>
+                    <h2 class="m-0  text-devicor" style="text-align:center">{{$machine['name']}} Tiempo Real</h2>
                     <input type="hidden" class="form-control" name="var_name" id="var_name" value="{{$machine['name']}}">
                     <input type="hidden" class="form-control" name="idmachine" id="idmachine" value="{{$machine['id']}}">
                     <input type="hidden" class="form-control" name="date" id="date" value="{{$date}}">
@@ -88,6 +88,7 @@
                myChart_cal.resize();
                myChart_dis.resize();
                myChart_prod.resize();
+               f_callOEE();
            });
       });
    

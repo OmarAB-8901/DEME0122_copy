@@ -1,10 +1,43 @@
-// var var_name = $('#var_name').val();
-// var description = '(' + $('#description').val() +')' ;
-// var varname = $('#var_name').val();
-// $('#nom_var').val(var_name);
-// var idvariable = $('#idvariable').val();
-// var eu = $('#eu').val();
-// var dates = $('#date').val(); 
+function f_callOEE(){         //ver si en otra parte lo llaman para que se muestre
+ 
+ 
+ 
+  $.ajaxSetup({
+  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+  });
+  $.ajax({
+      url: '/andon/oee/1/1/1',      
+      type: 'GET',
+      success: function (response) {
+          
+          if(response.length>0){   
+             
+              response[0].forEach(function (elemento, indice) {                  
+                  option_oee.series[0].data[0].value=elemento['oee'];
+                  myChart_oee.setOption(option_oee);
+                  option_dis.series[0].data[0].value=elemento['disponibilidad'];
+                  myChart_dis.setOption(option_dis);
+                  option_prod.series[0].data[0].value=elemento['eficiencia']; //prod eficiencia
+                  myChart_dis.setOption(option_prod);
+                  option_cal.series[0].data[0].value=elemento['calidad']; 
+                  myChart_cal.setOption(option_cal);
+
+              });       
+   
+}   
+}
+
+});
+/*fin  de dsacar los grupos*/
+
+}
+
+
+
+
+
+
+
 var chart_oee = document.getElementById('chart-panel_oee');
 var myChart_oee = echarts.init(chart_oee);
 
@@ -16,39 +49,6 @@ var myChart_dis = echarts.init(chart_dis);
 
 var chart_prod = document.getElementById('chart-panel_prod');
 var myChart_prod = echarts.init(chart_prod);
-// $('#myModalLoading').modal({ backdrop: 'static', keyboard: false }); 
-// $.ajaxSetup({
-//     headers: {
-//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')     
-//     }
-// }); 
-//         $.ajax({
-//                 url:'/trends/'+idvariable+'/d/'+dates+'/datos',
-//                 type:'GET',
-//                 success:function(response){
-//                     option.xAxis.data.length = 0;
-//                     option.series[0].data.length = 0; 
-//                     option.series[1].data.length = 0;
-//                     option.series[2].data.length = 0;
-                    
-//                 response.forEach(function (elemento, indice) {
-                      
-//                     option.xAxis.data.push(elemento['date'])
-//                     option.series[0].data.push(elemento['value']);
-//                     option.series[1].data.push(elemento['highLimit']);
-//                     option.series[2].data.push(elemento['lowLimit']);
-                    
-
-//                 });
-//                 setTimeout(() => {
-//                     $('#myModalLoading').modal('hide');
-//                 }, 3); 
-//                 myChart.setOption(option);
-                
-//                 }
-                
-               
-//         });
 
 var option_oee;
 var option_cal;
@@ -108,7 +108,7 @@ option_oee = {
       },
       data: [
         {
-          value: 96.7
+          value: 0
         }
       ]
     }
@@ -216,7 +216,7 @@ option_dis = {
       },
       data: [
         {
-          value: 95.7
+          value: 0
         }
       ]
     }
@@ -270,7 +270,7 @@ option_prod = {
       },
       data: [
         {
-          value: 96.7
+          value: 0
         }
       ]
     }

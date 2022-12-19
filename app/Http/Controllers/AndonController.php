@@ -89,8 +89,20 @@ class AndonController extends Controller
                     DB: execute ConsultaOrgCharts 1/1/1 */       
 
                 }    
+        public function SetDefectos($param1,$param2,$param3,$param4){
+                    $DB_SP = "EXECUTE";
+                    $DB_SP_START= "";
+                    $DB_SP_END= "";        
+                    $defectos = DB::select($DB_SP.' sp_SetDefectos '.$DB_SP_START.'?,?,?,?'.$DB_SP_END,array($param1,$param2,$param3,$param4));        
+                    return array ($defectos);
+                    /* http://127.0.0.1:8000/button/andon/setdefectos/{param1}/{param2}/{param3}/{param4}
+                       
+                        //execute sp_SetDefectos '7002',2,1,'F12201230D'*/
+    
+                    }    
 
    
+                    
 
     
 }

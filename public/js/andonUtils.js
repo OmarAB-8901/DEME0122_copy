@@ -51,6 +51,7 @@ function f_get_station(vstation){
               }     
 
           });
+
 }
 
 
@@ -102,9 +103,9 @@ var vgrupo;
 var vestacion;
 function f_callTelegram(vgrupo,vchart,vidShift,vmensaje){    
       let urlSend=    getLocalStorage("URLPLC");
-    
+    console.log("envio de mensaje");
       let messageStructure = {
-        idGroup: vgrupo,
+        idGroup: 2,
         idChart: vchart,    
         idShift: vidShift,
         dbMensaje: false,
@@ -158,10 +159,46 @@ function getListAndonTelegram(vSolicitudArea){
 
 
 
-function f_get_selected(){
+function f_ConInfoAndon(){
     //console.log("Hola mundo");
-    var elementoTable = document.getElementById('estado');
-   
+    //var elementoTable = document.getElementById('estado');
+   // var lblincidencia =document.getElementById('Incidencia2');
+    var contenidoCentro=document.getElementById('cardBodyCenter');
+    contenidoCentro.innerHTML="";
+    contenidoCentro.innerHTML=` <div class="row">
+                                  <div class="col-xl-6">
+                                      <div class="card-body">
+                                          <h5 class="card-title">Progreso de la linea</h5>   
+                                          <div class="row">
+                                            <div class="col-xl-6">  
+                                                <h2>20</h2>
+                                            </div>
+                                            <div class="col-xl-6">  
+                                              <h2>80</h2>
+                                            </div>
+
+                                          </div>                                                                        
+                                      </div>
+                                  </div>
+                                  <div class="col-xl-6">  
+                                    <div class="card-body">
+                                        <h5 class="card-title">Eficiencia de la linea</h5>                                                                           
+                                        <div class="echarts" id="chart-panel_avance" style="width: 400px; height:250%;"></div>  
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-xl-12">
+                                    <div class="echarts" id="chart-panel_oee" style="width: 300px; height:300%;"></div>     
+                                  </div>
+                                </div>
+                                
+                                
+                                `;
+                                
+
+    var lblmodelo= document.getElementById("lblModelo");
+    var lbldescripcionmodelo=document.getElementById("lblDescripcionModelo");
     varh = [];
     varl = [];
     mensaje = "";
@@ -183,8 +220,18 @@ function f_get_selected(){
                   '<tr><td><h4>Scrap: </h4></td><td><h4>' +  elemento[0]["scraps"] + '</h4></td></tr>' 
                   */
                   //grafica de porcentaje de avance
-                  option_oee.series[0].data[0]=elemento[0]["porcentaje"]
-                  myChart_oee.setOption(option_oee);
+                 // option_oee.series[0].data[0]=elemento[0]["porcentaje"]
+                  //myChart_oee.setOption(option_oee);
+
+                  //option_avance.series[0].data[0]=elemento[0]["goodpart"]
+                  //myChart_avance.setOption(option_avance);
+                  //option_avance.series[1].data[0]=elemento[0]["diferencia"]
+                  //myChart_avance.setOption(option_avance);
+                 // lblincidencia.innerHTML= '<h4> Incidencia ' + elemento[0]["paro"]  + '</h4>'
+                    
+                  lblmodelo.innerHTML="<h4>" + elemento[0]["modelo"] +"</h4>";
+                  lbldescripcionmodelo.innerHTML="<h4>" + elemento[0]["descmodelo"] +"</h4>";
+
                    /*
                    '<tr><td><h4>Porcentaje de avance: </h4></td><td><h4>' +  elemento[0]["porcentaje"] + '%</h4></td></tr>' +
                    '<tr><td><h4>Fin produccion: </h4></td><td><h4>' +  elemento[0]["ffinplan"] + '</h4></td></tr>' +
@@ -198,41 +245,36 @@ function f_get_selected(){
         }
         
     });
+    //setTimeout("f_get_selected()",80000);
   }
 
 
-  var vlinea
-function f_get_estado(vlinea){  
-  select = document.getElementById("planes");
-  varh = [];
-  varl = [];
-  mensaje = "";
-  $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
-  $.ajax({
-      url: '/button/andon/coninfoandon/1/1/1',
-      type: 'GET',
-      success: function (response) {
-          if(response.length>0){            
-              response.forEach(function (elemento, indice) {                 
-                 
-                //console.log(elemento[0]['nombre']);
-                  option = document.createElement("option");
-                  option.value = elemento[0]['id'];
-                  option.text = elemento[0]['nombre'];
-                  select.appendChild(option);
-
-
-
-              });
+  //View the workplan into the select item into the lider module
+function f_get_estado(){  
+    select = document.getElementById("planes");
+    varh = [];
+    varl = [];
+    mensaje = "";
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: '/button/andon/coninfoandon/2/1/1',
+        type: 'GET',
+        success: function (response) {
+            if(response.length>0){     
              
-          }   
-      }
-      
-  });
+             var i=0;
+                    response[0].forEach( (elemento, index)=> {                                             
+                        option = document.createElement("option");
+                        option.value = elemento['id'];
+                        option.text = elemento['nombre'];
+                        select.appendChild(option);
+                        
+                    });             
+            }  
+        }      
+    });
 }
-
-

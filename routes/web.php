@@ -20,7 +20,7 @@ Auth::routes();
 
 
 Route::get('/andon/oee/{idmachine}', 'AndonOEEController@index')->name('andonoee');
-Route::get('/andon/OEE/{param1}/{param2}/{param3}', 'AndonOEEController@consultaoee')->name('andonsoee');
+Route::get('/andon/oee/{param1}/{param2}/{param3}', 'AndonOEEController@consultaoee')->name('andonsoee');
 Route::get('/andon/event/{idmachine}', 'AndonEventController@index')->name('andonevent');
 Route::get('/andon/score/{idmachine}', 'AndonScorecardController@index')->name('andonscore');
 
@@ -30,6 +30,8 @@ Route::get      ('/button/andon/{param1}',                                      
 Route::get      ('/button/andon/orgchart/{param1}/{param2}/{param3}',           'AndonController@ConsultaOrgCharts')->name('org_chart');
 Route::get      ('/button/andon/coninfoandon/{param1}/{param2}/{param3}',       'AndonController@ConsultaInfoAndon')->name('con_info_andon');
 Route::get      ('/button/andon/coninfoestacion/{param1}/{param2}/{param3}',    'AndonController@ConsultaEstaciones')->name('con_info_estacion');
+Route::get      ('/button/andon/setdefectos/{param1}/{param2}/{param3}/{param4}', 'AndonController@SetDefectos')->name('set_defectos');
+                 // /button/andon/setdefectos/1/2/3/4
 
 Route::group(['middleware'=>['auth']],function(){
 
@@ -49,9 +51,7 @@ Route::group(['middleware'=>['auth']],function(){
         Route::get('/trends/{idvariable}/{caso}/{date}/datos', 'TrendsController@datos');
         Route::get('/trends/{caso}/{date}/{idvar}/{nomvar}/export', 'TrendsController@export')->name('excelT');
         Route::get('/andon/{idmachine}/{caso}/{date}/{casoS}/datos', 'OeeController@datosandon');
-
         Route::get('/oee/{idmachine}/{caso}/{date}/{casoS}/{partid}/{lotid}/{idshift}/datos', 'OeeController@datos');
-
         Route::get('/oee/{idmachine}/{caso}/{date}/{casoS}/{partid}/{lotid}/{idshift}/{nomvar}/export', 'OeeController@export');
         Route::get('/Events/{idmachine}/{caso}/{date}/datos', 'EventsController@datos');
         Route::get('/events/{caso}/{date}/{idmachine}/{nomvar}/export', 'EventsController@export')->name('excelA');

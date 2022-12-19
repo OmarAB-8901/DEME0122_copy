@@ -1,231 +1,223 @@
+
 @extends('andon_lider.contenido') 
 @section('andonlider')
-
-    <div class="container-fluid" id="principal">
+<div class="container-fluid" id="principal">
         <!--Declaracion de variables-->
-        <input type="hidden" id="IdStation" name="IdStation" value="0">
-        <!--Falta trabajar con quien necesita ayuda el PLC-->
+        <input type="hidden" id="IdStation" name="IdStation" value="0">        
         <input type="hidden" id="AyudaPLC" name="IdStation" value="0">  
-        <!------------------------------------------------------------>
-        <div class="row">
-            <div class="col-xl-12 col-lg-7">
-                <div class="card shadow mb-4">
-                    
-                    <nav class="navbar navbar-light bg-devicor">
-                        
+        <!------------------------------    END OF VARIABLES    ------------------------------------>
+    <div class="row">
+        <div  class="col-xl-12" id="menu">
+            <nav class="navbar navbar-light bg-devicor">                        
                         @foreach($linea as $varline)
-                        <h2 id="lineName" class="display-5 text-light">Andon: {{$varline['name']}}                         
-                       
                             <input type="hidden" id="lineId" name="lineId" value="{{$varline['id']}}"> </input>
                             <input type="hidden" id="lineDesc" name="lineDesc" value="{{$varline['name']}}"> </input>
-                        </h2>     
-                        
-                        <div><h4 id="clock" class="text-light"></h4></div>
-                        @endforeach                     
-                        
+                            <h2 id="lineName" class="display-5 text-light">Andon: {{$varline['name']}}</h2>                             
+                            <div><h4 id="clock" class="text-light"></h4></div>
+                        @endforeach                                             
                         {{-- <input type="date" class="form-control" name="date" id="date" value="{{$date}}">      --}} 
-
-                    </nav>
-
-                </div>         
-
-            </div>
+            </nav>
         </div>
-        <!-------------------------------------------------------Fin de titulo-------------------------------------------------->
-        <div class="row">
-            <div class="col-xl-4 col-lg-4">       
-                <div class="card shadow mb-4 rounded"  style="height: 740px" > <!--style="border-color:#84329B"-->
-                    <div class="card-header py-3 bg-devicor rounded" id="HeaderWorkOrder" >
-                        <h3 class="m-0 font-weight-bold text-primary text-light " style="text-align:center">Orden de Trabajo</h3>
-                        
-                    </div>
-                    <div class="card-body rounded">
-                        <!--div class="row">
-                            <div clsaa="col-xl-12">                            
-                                <button id="btnEstablecerplan"  onClick="f_SetPlan()"><h4>&nbsp;Establecer Plan</h4></button>
-                            </div>
-                        </-div>-->
-                       
-                        <div class="row">
-                            <div clsaa="col-xl-12">
-                            <table class="table" id="orden">
-                            <tr>
-                                <td><select name="planes" id="planes" class="form-select" aria-label="Default select example">
-                                <option value="1">F12201230D CA000335003</option>
-                                <option value="2">F12150403D CA000335004</option>
-                                <option value="3">F12201284D CA000335004</option> 
-                            </select></td>
-                                <td><button class="btn btn-block bg-devicor" onClick="f_writeDataOK(500)" >Cambiar producci&oacute;n</button></td>
-                            </tr>
-                            <tr> 
-                                <td>Captura de defectos:</td>
-                                <td><input type="text" value=""  placeholder="Cantidad..." class="form">
-                                
-                                    
-                            </tr>
-                            <tr> 
-                                <td><button id="3003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >Otro</button></td>
-                                <td><button id="7003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">3010</button></td>
-                            </tr>
-                            <tr> 
-                                <td><button id="3003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >3005</button></td>
-                                <td><button id="7003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">3007</button></td>
-                            </tr>
-                            <tr> 
-                                <td><button id="3003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >3008</button></td>
-                                <td><button id="7003" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">7004</button></td>
-                            </tr>
-                            <tr> 
-                                
-                                <td><button id="7006" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">7006</button></td>
-                                <td><button id="7008" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">7010</button></td>
-                            </tr>
-                                
-                        </table>
-                            </div>
-                           
-                                            
+    </div>       
+        <!------------------------------    END OF TITLE  ------------------------------------------>
+    <div class="row" id="contenido">
+        <div  class="col-xl-4" id="panelLeft">
+            <div class="row" id="ordenTrabajo">
+                <div class="col-xl-12">  
+                    <div class="card shadow"  > 
+                        <div class="card-header  bg-devicorinfo  rounded" id="HeaderWorkOrder" >
+                            <h3 class="m-0 font-weight-bold text-primary text-light " style="text-align:center">Orden de Trabajo</h3>
                         </div>
-                      
-                        @foreach($work_order as $var)
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <label for="inputEmail4">#Modelo</label>                                        
-                                </div>
-                                <div class="form-group col-md-10">                                        
-                                    <input type="text" class="form-control" name="modelo" placeholder="Modelo" value="{{$var['model']}}" readonly="readonly">
+                        <div class="card-body">                    
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="row form-group">    
+                                        <div class="col-xl-12">  
+                                            <label for="planes" class="text-black">Seleccione orden de trabajo:</label> 
+                                        </div>    
+                                    </div>   
+                                    <div class="row form-group">  
+                                        <div class="col-xl-8">  
+                                            <select name="planes" id="planes" class="form-control  form-select" aria-label="Seleccione">                                                                
+                                            </select>                                       
+                                        </div>                                        
+                                        <div class="col-xl-4">  
+                                            <button class="btn btn-block bg-devicor form-control text-white " onClick=" f_SetPlan()" >Cambiar.</button>                                           
+                                        </div>
+                                    </div>  
+                                        <div class="card-body">
+                                            <div class="row form-group">  
+                                                <div class="col-xl-4">Modelo</div>  
+                                                <div class="col-xl-8">Descripci&oacute;n</div>                                      
+                                            </div>
+                                            <div class="row ">  
+                                                <div class="col-xl-4" id="lblModelo">#Modelo</div>  
+                                                <div class="col-xl-8" id="lblDescripcionModelo" >#Descripci&oacute;n</div>                                      
+                                            </div>
+                                            <div class="row form-group">  
+                                                <div class="col-xl-6">Piezas/hora</div>  
+                                                <div class="col-xl-6">Plan</div>  
+                                            </div>
+                                            <div class="row form-group">  
+                                                <div class="col-xl-6" id="lblPiezasHora">#Piezas/Hora</div>  
+                                                <div class="col-xl-6" id="lblPlan" >#Plan</div>                                      
+                                            </div>
+                                        </div>
+
+
+
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <label for="inputPassword4">Descripción</label>
-                                </div>
-                                <div class="form-group col-md-10">
-                                    <input type="text" class="form-control" name="descripcion" placeholder="Descripción" value="{{$var['description']}}" readonly="readonly">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputCity">Pzs x Hora</label>
-                                        </div>
-                                        <div class="form-group col-md-8">
-                                            <input type="text" class="form-control" name="ict" placeholder="Pzs x Hora" value="{{$var['valor_std']*60}}" readonly="readonly">
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                            <div class="form-group col-md-6">
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                            <label for="inputZip">Plan</label>
-                                    </div>
-                                    <div class="form-group col-md-8">
-                                            <input type="text" class="form-control" name="plan" placeholder="Plan" value="{{$var['plan']}}" readonly="readonly">
-                                    </div>
-                                </div>
-                            </div>  
-                            </div>      
-                        @endforeach 
+                        </div>    
                     </div>
                 </div>
-
-            </div>
-            <div class="col-xl-4 col-lg-4">    
-                <div class="card shadow mb-4"  style="height: 740px" >
-                    <div class="card-header py-3 bg-devicor" id="HeaderActual">
-                        <h3 class="m-0 font-weight-bold text-primary  text-primary text-light" style="text-align:center">Estado Actual L&iacute;nea</h3>
-                        
-                    </div>
-                    <div class="card-body">
-                    <div class="echarts" id="chart-panel_avance" style="width: 400px; height:20%;"></div>  
-                    <div class="echarts" id="chart-panel_oee" style="width: 300px; height:90%;"></div>     
-                        <table id="estado" class="table">
-                        <tr>
-                        
-                        </tr>
-                        <tr>
-                            <td>
-                            
-                            </td>
-
-                        </tr>
-
-
-                        </table>
-                       
-                       
-                       
-                       
-                        
-                    </div>
-                </div>                                 
-            </div>
-            <div class="col-xl-4 col-lg-4">  
-                <div class="card shadow mb-4"  style="height: 740px" >
-                    <div class="card-header py-3 bg-devicorlight text-primary text-light bg-devicor" id="HeaderEficiencia"> 
-                        <h2 class="m-0 font-weight-bold text-primary  text-light" style="text-align:center">Incidencias</h2>                        
-                    </div>
-                    <div class="card-body">
-                        <div calss=row>
-                            <div class="col-xl-12" id="Incidencia"><h4>Paros en la linea: 00:10:00 </h4></div>
+            </div>   <!------------------   FIN DE ORDEN DE TRABAJO ---------------------------------> 
+            <div class="row" id="Defectos">
+                <div class="col-xl-12">  
+                    <div class="card shadow"   > 
+                        <div class="card-header  bg-devicorinfo  rounded" id="HeaderWorkOrder" >
+                            <h3 class="m-0 font-weight-bold text-primary text-light " style="text-align:center">Defectos</h3>
                         </div>
-                        <div class="row">
-                            <table class="table" id="consola">
-                                
-                                
-                            </table>
-                        </div>
-                       
-                         
-                        
-                    <hr>
-                        
+                        <div class="card-body">                    
+                            <div class="row">
+                                <div class="col-xl-12">  
+                                    <div class="row form-group">  
+                                        <div class="col-xl-6">
+                                            <label for="txtCantidad">Cantidad</label>                                   
+                                        </div>                         
+                                        <div class="col-xl-6">
+                                            <input type="text" value=""  placeholder="Cantidad..."  id="txtcantidad" class="form">                                   
+                                        </div>  
+                                    </div>                       
+                                    <div class="row form-group"> 
+                                        <div class="col-xl-6">
+                                            <label for="txtDefecto">Codigo Defecto:</label>           
+                                        </div>   
+                                        <div class="col-xl-6">
+                                            <input type="text" value=""  placeholder="Codigo Defecto..."  id="txtcodigo" class="form">
+                                        </div>   
+                                    </div>
+                                    <div class="row form-group">  
+                                        <div class="col-xl-12">
+                                            <button id="btnReportar"  onclick="f_reportarDefecto()" class="btn btn-lg btn-block bg-devicor text-white" >Reportar</button>
+                                        </div>    
+                                    </div>      
+                                    
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row form-group">
+                                                <div class="col-xl-4">
+                                                    <button id="btn1" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">3007</button>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button id="btn2" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >3008</button>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button id="btn3" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">3009</button>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-xl-4">
+                                                    <button id="btn5" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">7007</button>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button id="btn5" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >7008</button>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button id="btn6" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">7009</button>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-xl-4">
+                                                    <button id="btn5" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">15007</button>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button id="btn8" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >15008</button>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button id="btn9" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">15009</button>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-xl-4">
+                                                    <button id="btn10" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">21007</button>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button id="btn11" class="btn bg-gold  btn-lg btn-block bg-secondary text-white" >21008</button>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button id="btn12" class="btn bg-gold  btn-lg btn-block bg-secondary text-white">21009</button>
+                                                </div>
+                                            </div>
+                                            
+                                                             
+                                        </div>
+                                    </div>      
+
+
+
+                                </div>
+                            </div>
+                        </div> <!--Fin de Cardbody----->   
                     </div>
-				  </div>
-            </div>   
-            <!------------------------------------------------------Fin de gauge eiciencia------------------------------------------->
+                </div>
+            </div>   <!------------------   FIN DE DEFECTOS--------------------------------->           
 
-        </div>
-        
- 
-     
+        </div>   <!-----------------------  FIN DE PANEL LEFT---------------------------------------->
+        <div  class="col-xl-8" id="panelCenter">
+            <div class="row" id="rowEstadistica">
+                <div  class="col-xl-12">
+                    <div class="card shadow rounded"  > 
+                        <div class="card-header bg-devicorinfo rounded" id="HeaderPanelCenter" >
+                            <h3 class="m-0 font-weight-bold text-primary text-light " id="labelPanelCenter" style="text-align:center">Estadistica de trabajo</h3>
+                        </div>
+                        <div class="card-body rounded" id="cardBodyCenter"> 
 
-       
-        
-            <!--div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-Warning" data-dismiss="modal">Cerrar</button>
-            </!div-->        
-        </div>
-    </div>
-</div>
 
-</div> <!--------------------------------------------End of container fluid------------------------------------------>
+
+                        </div>    
+                    </div>
+                </div>
+            </div>   <!------------------   FIN DE ESTADISTICA DE TRABAJO --------------------------------->
+        </div>   <!------------------   FIN DE PANEL CENTER ---------------------------------> 
+      
+    </div> <!---------------------------    FIN DE CONTENIDO-------------------------------------------->    
+
+</div><!------------------------------      END OF PRINCIPAL    --------------------------------------------------------->
 
 @endsection
 @section('scripts')
     <script>
+        var  timeEscuchaPLC;
+        var escuchaSolicitud=2000;
+
         $(document).ready(function(){  
             vstation=$('input[name="lineId"]').val();
-            f_ConInfoAndon();  
-                
+            timeEscuchaPLC= setInterval(f_ListenPLC,escuchaSolicitud);
+           
+                /*
                         window.addEventListener('resize',function(){
-                                myChart_oee.resize();
-                                myChart_avance.resize();
+                        myChart_oee.resize();
+                        myChart_avance.resize();
+                        //myChart_defectos.resize(); Se quita porque me indican que no es de utilizad 20221217
                               
-                        });
-                
-                
-                f_get_selected();
+                        });*/
+
+                //f_ConInfoAndon();  //Comentado porque no se le encuentra el origen
+               // f_ListenPLC();   // Se comenta, se debe hacer con set time out anidado
+             //  let timerId = setTimeout(f_ListenPLC, escuchaSolicitud);
+
+
+                f_get_estado(vstation);     //View the workplan into selected tool lider andoutil.js
+                //f_get_selected();           //Load line info into the andon lider
+                f_ConInfoAndon(); 
                 f_get_station(vstation);
                 f_util_get_local_help();                       
-                f_save_UrlServerAPIs();      //Set URL Routes local storage
+                f_save_UrlServerAPIs();     //Set URL Routes local storage
                 f_set_dataLine();           //Set into local storage dataline
                 f_setClock();               //Set the time permanently;
                          //Load the andon's information OEE, Events and WorkPlan, the graphical status
-                f_ListenPLC();   
+                
               
                         //Listen PLC's signals
             });
@@ -249,7 +241,7 @@
     <script src="{{ asset('js/efficiency.js')}}"></script>
     <script src="{{ asset('js/andonRequest.js')}}"></script>
     <script src="{{ asset('js/andonCore.js')}}"></script>
-    <script src="{{ asset('js/andonUtils.js')}}"></script>
     <script src="{{ asset('js/andonChart.js')}}"></script>
+    <script src="{{ asset('js/andonUtils.js')}}"></script>    
     
 @endsection

@@ -24,31 +24,39 @@
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('vendor/sweetalert/sweetalert2.css') }}" rel="stylesheet" type="text/css" />
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+   
+   
 </head>
 <body id="page-top">
     
   <!-- Page Wrapper -->
   <div id="wrapper">
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
+                <!-- Topbar 
                 <nav class="navbar navbar-expand navbar-light  bg-devicor topbar mb-4 static-top shadow">
                     
                         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
                             <div class="sidebar-brand-icon">
                                 <img src="{{asset('img/Mammotome.png')}}" alt="" height="50">
                             </div>
+                            <span class="navbar-text text-white">
+	                            &nbsp;&nbsp;
+                            </span>
+                            <span class="navbar-text text-white" id="navbarlinea">
+	                        <h3>Estado</h3>
+                            </span>
+                            
                         </a>
 
                 </nav>
-                <!-- End of Topbar -->
+               End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -109,27 +117,22 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-   
-   
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>    
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>     
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-  
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>  
     @yield('scripts')
     <script src="{{ asset('vendor/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
-    <script src="{{ asset('vendor/sweetalert/sweetalert2.all.min.js')}}"></script>
-    
+    <script src="{{ asset('vendor/sweetalert/sweetalert2.all.min.js')}}"></script>    
     <script src="{{ asset('js/mspace.js') }}"></script>
     <script src="{{ asset('js/controlesyear.js') }}"></script>
     <script src="{{ asset('js/btnexport.js') }}"></script>
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->
+
+    
 
 </body>
 </html>
