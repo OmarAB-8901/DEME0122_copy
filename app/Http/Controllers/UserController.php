@@ -12,9 +12,11 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-            $personas = User::join('role_user','users.id','=','role_user.user_id')
+            $personas = User::where('users.id','!=','2')
+            ->where('users.id','!=','3')
+            ->join('role_user','users.id','=','role_user.user_id')
             ->join('roles','role_user.role_id','=','roles.id')
-            ->select('users.id','role_user.role_id','roles.description as name_rol','users.name','users.email','users.condicion','users.notificaciones')
+            ->select('users.id','role_user.role_id','roles.description as name_rol','users.name','users.email','users.condicion')
             ->orderBy('users.id', 'desc')->get();
 
             $roles = Role::where('id','>','2')
@@ -31,7 +33,7 @@ class UserController extends Controller
             $user->password = bcrypt( $request->password);
             $user->idgroup = 1;
             $user->condicion = '1';  
-            $user->notificaciones = $request->notif ? true : false;     
+            $user->notificaciones = 1;    
             $user->save();
             $user->roles()->attach($request->idrol);
             return Redirect::to('/user');
@@ -46,7 +48,7 @@ class UserController extends Controller
             $user->password = bcrypt( $request->password);
             $user->idgroup = 1;
             $user->condicion = '1';
-            $user->notificaciones = $request->notif ? true : false; 
+            $user->notificaciones = 1; 
             $user->save();
             $user->roles()->sync($request->idrol);
             return Redirect::to('/user');

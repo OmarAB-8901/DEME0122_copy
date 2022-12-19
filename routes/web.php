@@ -26,7 +26,6 @@ Route::get('/andon/score/{idmachine}', 'AndonScorecardController@index')->name('
 
 
 Route::get      ('/button/andon/{param1}',                                      'AndonController@index')->name('andomb');
-//Route::post     ('/button/andon/workorder/',                                    'AndonController@const_work_order')->name('const_work_order');
 Route::get      ('/button/andon/orgchart/{param1}/{param2}/{param3}',           'AndonController@ConsultaOrgCharts')->name('org_chart');
 Route::get      ('/button/andon/coninfoandon/{param1}/{param2}/{param3}',       'AndonController@ConsultaInfoAndon')->name('con_info_andon');
 Route::get      ('/button/andon/coninfoestacion/{param1}/{param2}/{param3}',    'AndonController@ConsultaEstaciones')->name('con_info_estacion');
@@ -96,12 +95,6 @@ Route::group(['middleware'=>['auth']],function(){
         Route::put  ('/areas/desactivar',          'AreasController@desactivar')->name('ar_desactivar');
         Route::put  ('/areas/activar',             'AreasController@activar')->name('ar_activar');
 
-        Route::get  ('/planes',                     'PlanesController@index')->name('planes');
-        Route::post ('/planes/registrar',           'PlanesController@store')->name('pl_registrar');
-        Route::put  ('/planes/actualizar',          'PlanesController@update')->name('pl_edit');
-        Route::put  ('/planes/desactivar',          'PlanesController@desactivar')->name('pl_desactivar');
-        Route::put  ('/planes/activar',             'PlanesController@activar')->name('pl_activar');
-
         Route::get  ('/roles',                       'RolesController@index')->name('roles');
         Route::post ('/roles/registrar',             'RolesController@store')->name('r_registrar');
         Route::put  ('/roles/actualizar',            'RolesController@update')->name('r_edit');
@@ -132,14 +125,17 @@ Route::group(['middleware'=>['auth']],function(){
 
     });
 
-        /*Route::group (['middleware' => ['Lider']], function () {
-            Route::get      ('/button/andon/{param1}',                                      'AndonController@index')->name('andomb');
-            //Route::post     ('/button/andon/workorder/',                                    'AndonController@const_work_order')->name('const_work_order');
-            Route::get      ('/button/andon/orgchart/{param1}/{param2}/{param3}',           'AndonController@ConsultaOrgCharts')->name('org_chart');
-            Route::get      ('/button/andon/coninfoandon/{param1}/{param2}/{param3}',       'AndonController@ConsultaInfoAndon')->name('con_info_andon');
-            Route::get      ('/button/andon/coninfoestacion/{param1}/{param2}/{param3}',    'AndonController@ConsultaEstaciones')->name('con_info_estacion');    
-
-        });*/
+    Route::group(['middleware' => ['Calidad']], function () {
+        Route::get  ('/calidad',                     'CalidadController@index')->name('calidad');
+    });
+    Route::group(['middleware' => ['Plan']], function () {
+        Route::get  ('/planes',                     'PlanesController@index')->name('planes');
+        Route::post ('/planes/registrar',           'PlanesController@store')->name('pl_registrar');
+        Route::put  ('/planes/actualizar',          'PlanesController@update')->name('pl_edit');
+        Route::put  ('/planes/desactivar',          'PlanesController@desactivar')->name('pl_desactivar');
+        Route::put  ('/planes/activar',             'PlanesController@activar')->name('pl_activar');
+        
+    });
 
      
 });

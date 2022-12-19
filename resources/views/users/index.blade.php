@@ -24,7 +24,6 @@
                       <th>Email</th>
                       <th>Rol</th>
                       <th>Estado</th>
-                      <th>Notificaciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -60,17 +59,6 @@
                          @else
                         <div>
                             <span class="badge badge-danger">Desactivado</span>
-                        </div>
-                        @endif
-                    </td>
-                    <td>
-                       @if($var['notificaciones']==1)
-                         <div>
-                            <span class="badge badge-success">Activas</span>
-                         </div>
-                         @else
-                        <div>
-                            <span class="badge badge-danger">Desactivadas</span>
                         </div>
                         @endif
                     </td>
@@ -121,17 +109,6 @@
                                         <option value="{{$rol['id']}}">{{$rol['description']}} </option>
                                         @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                              <label class="col-md-3 form-control-label" for="text-input">Notificaciones </label>
-                                <div class="col-md-9">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="notif" name="notif">
-                                    <label class="form-check-label" for="gridCheck1">
-                                      Telegram
-                                    </label>
-                                  </div>
                                 </div>
                             </div>
                             <div  class="form-group row div-error">
