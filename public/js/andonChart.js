@@ -1,9 +1,10 @@
 /*var chart_defectos=document.getElementById('chart-panel_defectos'); 
-/var chart_oee = document.getElementById('chart-panel_oee');
+var chart_oee = document.getElementById('chart-panel_oee');*/
 var chart_avance = document.getElementById('chart-panel_avance'); 
-var myChart_oee = echarts.init(chart_oee);
+
+/*var myChart_oee = echarts.init(chart_oee);*/
 var myChart_avance=echarts.init(chart_avance);
-var myChart_defectos=echarts.init(chart_defectos); */
+/*var myChart_defectos=echarts.init(chart_defectos); */
 var option_oee;
 
 var 
@@ -66,53 +67,55 @@ option_oee = {
 
 option_avance={
     
-    
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      // Use axis to trigger tooltip
-      type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
-    }
-  },
-  legend: {},
-  grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
-    containLabel: true
-  },
-  xAxis: {
-    type: 'value'
-  },
-  yAxis: {
-    type: 'category',
-    data: ['PROD:'],
-    fontSize: 35
-  },
-    series: [
+  series: [
     {
-      name: 'Producido',
-      type: 'bar',
-      stack: 'total',
-      label: {
-        show: true
+      type: 'gauge',
+      axisLine: {
+        lineStyle: {
+          width: 10,
+          color: [
+            [0.95, '#ff0000'],
+            [1, '#008f39']
+          ]
+        }
       },
-      emphasis: {
-        focus: 'series'
+      pointer: {
+        itemStyle: {
+          color: 'auto'
+        }
       },
-      data: [0]
-    },
-    {
-      name: 'Por producir',
-      type: 'bar',
-      stack: 'total',
-      label: {
-        show: true
+      axisTick: {
+        distance: -30,
+        length: 5,
+        lineStyle: {
+          color: '#fff',
+          width: 2
+        }
       },
-      emphasis: {
-        focus: 'series'
+      splitLine: {
+        distance: -30,
+        length: 10,
+        lineStyle: {
+          color: '#fff',
+          width: 4
+        }
       },
-      data: [0]
+      axisLabel: {
+        color: 'auto',
+        distance: 5,
+        fontSize: 15
+      },
+      detail: {
+        valueAnimation: true,
+        fontSize: 45,
+        formatter: '{value}%',
+        color: 'auto'
+      },
+      data: [
+        {
+          value: 0
+        }
+      ]
     }
   ]
 
@@ -178,11 +181,7 @@ option_defectos={
 /*=======================================================Fin de defectos ============================================*/
 
 
-
-/*
-
-myChart_oee.setOption(option_oee);
+//myChart_oee.setOption(option_oee);
 myChart_avance.setOption(option_avance);
-myChart_defectos.setOption(option_defectos);
+//myChart_defectos.setOption(option_defectos);
 
-*/

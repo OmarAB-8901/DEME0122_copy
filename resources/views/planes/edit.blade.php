@@ -41,6 +41,12 @@
                                                         <input type="number" class="form-control" name="plan" placeholder="Plan" value="{{$var['plan']}}" maxlength="30" required>
                                                     </div>
                                                 </div> 
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label" for="text-input">Cantidad de asociados</label>
+                                                    <div class="col-md-9">
+                                                        <input type="number" class="form-control" name="cantasoc" placeholder="Cant. asoc" value="{{$var['cantasoc']}}" maxlength="30" required>
+                                                    </div>
+                                                </div> 
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>

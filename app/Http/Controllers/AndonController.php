@@ -75,7 +75,7 @@ class AndonController extends Controller
                 $DB_SP_END= "";        
                 $orgchart = DB::select($DB_SP.' ConsultaInfoAndon '.$DB_SP_START.'?,?,?'.$DB_SP_END,array($param1,$param2,$param3));        
                 return array ($orgchart);
-                /*  http://127.0.0.1:8000/button/andon/orgchart/1/1/1
+                /*  http://127.0.0.1:8000/button/andon/orgchart/2/'1'/'1'
                     DB: execute ConsultaOrgCharts 1/1/1 */        
                 }
 
@@ -93,13 +93,39 @@ class AndonController extends Controller
                     $DB_SP = "EXECUTE";
                     $DB_SP_START= "";
                     $DB_SP_END= "";        
-                    $defectos = DB::select($DB_SP.' sp_SetDefectos '.$DB_SP_START.'?,?,?,?'.$DB_SP_END,array($param1,$param2,$param3,$param4));        
+                    $defectos = DB::statement($DB_SP.' sp_SetDefectos '.$DB_SP_START.'?,?,?,?'.$DB_SP_END,array($param1,$param2,$param3,$param4));        
                     return array ($defectos);
                     /* http://127.0.0.1:8000/button/andon/setdefectos/{param1}/{param2}/{param3}/{param4}
                        
                         //execute sp_SetDefectos '7002',2,1,'F12201230D'*/
     
                     }    
+
+  
+                    
+
+        public function SetPersonal(Request $request)
+                        {
+                            $DB_SP = "EXECUTE";
+                            $DB_SP_START= "";
+                            $DB_SP_END= "";        
+                            $defectos = DB::statement($DB_SP.' sp_SetPersonal '.$DB_SP_START.'?,?,?,?'.$DB_SP_END,array($param1,$param2,$param3,$param4));        
+                            return array ($defectos);
+                            
+                            
+                            /*
+                            $machine = new Machine();
+                            $machine->name = $request->name;
+                            $machine->idgroup = 1;
+                            $machine->activar_oee = $request->oee ? true : false;
+                            $machine->activar_eventos = $request->eventos ? true : false;
+                            $machine->condicion = '1';
+                    
+                            $machine->save();
+                            return Redirect::to('/machine');
+                            */
+                        }            
+           
 
    
                     

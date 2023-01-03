@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Planes;
 use App\Models;
+use App\MAchines;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -12,8 +13,8 @@ class PlanesController extends Controller
 {
     public function index(Request $request)
     {
-        $planes = Planes::join('models','models.id','=','planes.model')
-        ->select('planes.id','work_order','model','models.name','lotId','plan','planes.condicion')->orderBy('work_order', 'asc')->get();
+        $planes = Planes::join('models','models.id','=','planes.model')        
+        ->select('planes.id','work_order','model','models.name','lotId','plan','planes.condicion','cantasoc')->orderBy('work_order', 'asc')->get();
 
         $models = Models::select('id','name')->orderBy('name', 'asc')->get();
 
@@ -28,6 +29,7 @@ class PlanesController extends Controller
         $planes->lotId= $request->lote;
         $planes->plan = $request->plan;
         $planes->condicion = '1';
+        $planes->cantasoc=$request->cantasoc;
         $planes->save();
         return Redirect::to('/planes');
     }
@@ -39,6 +41,7 @@ class PlanesController extends Controller
         $planes->idmachine = $request->idmachine;
         $planes->lotId= $request->lote;
         $planes->plan = $request->plan;
+        $planes->cantasoc= $request->cantasoc;
         $planes->condicion = '1';
         $planes->save();
         return Redirect::to('/planes');

@@ -19,18 +19,20 @@ use App\Exports\EventsExport;
 Auth::routes();
 
 
-Route::get('/andon/oee/{idmachine}', 'AndonOEEController@index')->name('andonoee');
-Route::get('/andon/oee/{param1}/{param2}/{param3}', 'AndonOEEController@consultaoee')->name('andonsoee');
-Route::get('/andon/event/{idmachine}', 'AndonEventController@index')->name('andonevent');
-Route::get('/andon/score/{idmachine}', 'AndonScorecardController@index')->name('andonscore');
+Route::get  ('/andon/oee/{idmachine}',                  'AndonOEEController@index')->name('andonoee');
+Route::get  ('/andon/oee/{param1}/{param2}/{param3}',   'AndonOEEController@consultaoee')->name('andonsoee');
+Route::get( '/andon/event/{idmachine}',                 'AndonEventController@index')->name('andonevent');
+Route::get  ('/andon/score/{idmachine}',                'AndonScorecardController@index')->name('andonscore');
 
 
-Route::get      ('/button/andon/{param1}',                                      'AndonController@index')->name('andomb');
-Route::get      ('/button/andon/orgchart/{param1}/{param2}/{param3}',           'AndonController@ConsultaOrgCharts')->name('org_chart');
-Route::get      ('/button/andon/coninfoandon/{param1}/{param2}/{param3}',       'AndonController@ConsultaInfoAndon')->name('con_info_andon');
-Route::get      ('/button/andon/coninfoestacion/{param1}/{param2}/{param3}',    'AndonController@ConsultaEstaciones')->name('con_info_estacion');
-Route::get      ('/button/andon/setdefectos/{param1}/{param2}/{param3}/{param4}', 'AndonController@SetDefectos')->name('set_defectos');
-                 // /button/andon/setdefectos/1/2/3/4
+
+Route::get      ('/button/andon/{param1}',                                          'AndonController@index')->name('andomb');
+Route::get      ('/button/andon/orgchart/{param1}/{param2}/{param3}',               'AndonController@ConsultaOrgCharts')->name('org_chart');
+Route::get      ('/button/andon/coninfoandon/{param1}/{param2}/{param3}',           'AndonController@ConsultaInfoAndon')->name('con_info_andon');
+Route::get      ('/button/andon/coninfoestacion/{param1}/{param2}/{param3}',        'AndonController@ConsultaEstaciones')->name('con_info_estacion');
+Route::get      ('/button/andon/setdefectos/{param1}/{param2}/{param3}/{param4}',   'AndonController@SetDefectos')->name('set_defectos');
+Route::post     ('/button/andon/setpersonal/',                                      'AndonController@SetPersonal')->name('set_personal');
+
 
 Route::group(['middleware'=>['auth']],function(){
 

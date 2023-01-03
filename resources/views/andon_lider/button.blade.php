@@ -8,12 +8,15 @@
         <!------------------------------    END OF VARIABLES    ------------------------------------>
     <div class="row">
         <div  class="col-xl-12" id="menu">
-            <nav class="navbar navbar-light bg-devicor">                        
+
+            <nav class="navbar  ">                        
+                         <a class="navbar-brand" href="#">
+                        <img src="/img/Mammotomelarge.jpg" width="506" height="60" alt=""> </a>
                         @foreach($linea as $varline)
                             <input type="hidden" id="lineId" name="lineId" value="{{$varline['id']}}"> </input>
                             <input type="hidden" id="lineDesc" name="lineDesc" value="{{$varline['name']}}"> </input>
-                            <h2 id="lineName" class="display-5 text-light">Andon: {{$varline['name']}}</h2>                             
-                            <div><h4 id="clock" class="text-light"></h4></div>
+                            <h2 id="lineName" class="display-5 text-dark ">Andon: {{$varline['name']}}</h2>                             
+                            <div><h4 id="clock" class="text-dark"></h4></div>
                         @endforeach                                             
                         {{-- <input type="date" class="form-control" name="date" id="date" value="{{$date}}">      --}} 
             </nav>
@@ -47,18 +50,18 @@
                                     </div>  
                                         <div class="card-body">
                                             <div class="row form-group">  
-                                                <div class="col-xl-4">Modelo</div>  
+                                                <div class="col-xl-4 ">Modelo</div>  
                                                 <div class="col-xl-8">Descripci&oacute;n</div>                                      
                                             </div>
                                             <div class="row ">  
                                                 <div class="col-xl-4" id="lblModelo">#Modelo</div>  
                                                 <div class="col-xl-8" id="lblDescripcionModelo" >#Descripci&oacute;n</div>                                      
                                             </div>
-                                            <div class="row form-group">  
+                                            <div class="row ">  
                                                 <div class="col-xl-6">Piezas/hora</div>  
                                                 <div class="col-xl-6">Plan</div>  
                                             </div>
-                                            <div class="row form-group">  
+                                            <div class="row ">  
                                                 <div class="col-xl-6" id="lblPiezasHora">#Piezas/Hora</div>  
                                                 <div class="col-xl-6" id="lblPlan" >#Plan</div>                                      
                                             </div>
@@ -171,14 +174,32 @@
                         <div class="card-header bg-devicorinfo rounded" id="HeaderPanelCenter" >
                             <h3 class="m-0 font-weight-bold text-primary text-light " id="labelPanelCenter" style="text-align:center">Estadistica de trabajo</h3>
                         </div>
-                        <div class="card-body rounded" id="cardBodyCenter"> 
-
-
+                        <div class="card-body rounded"> 
+                            <div class="row"  >
+                                <div class="col-xl-12" id="cardBodyCenter"></div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-xl-6">
+                                    <div class="card shadow"   > 
+                                        <div class="card-header  bg-devicorinfo  rounded" id="HeaderWorkOrder" >
+                                            <h3 class="m-0 font-weight-bold text-primary text-light " style="text-align:center">Eficiencia de la linea:</h3>
+                                        </div>
+                                    <div class="card-body">                    
+                                        <div class="echarts" id="chart-panel_avance" style="width: 500px; height:250%;"></div>  
+                                    </div>                
+                                </div>
+                                
+                                    
+                                
+                            </div>
 
                         </div>    
                     </div>
                 </div>
             </div>   <!------------------   FIN DE ESTADISTICA DE TRABAJO --------------------------------->
+
+         
+
         </div>   <!------------------   FIN DE PANEL CENTER ---------------------------------> 
       
     </div> <!---------------------------    FIN DE CONTENIDO-------------------------------------------->    
@@ -195,21 +216,17 @@
             vstation=$('input[name="lineId"]').val();
             timeEscuchaPLC= setInterval(f_ListenPLC,escuchaSolicitud);
            
-                /*
+            
                         window.addEventListener('resize',function(){
-                        myChart_oee.resize();
+            //            myChart_oee.resize();
                         myChart_avance.resize();
                         //myChart_defectos.resize(); Se quita porque me indican que no es de utilizad 20221217
                               
-                        });*/
+                        });
 
-                //f_ConInfoAndon();  //Comentado porque no se le encuentra el origen
-               // f_ListenPLC();   // Se comenta, se debe hacer con set time out anidado
-             //  let timerId = setTimeout(f_ListenPLC, escuchaSolicitud);
-
-
-                f_get_estado(vstation);     //View the workplan into selected tool lider andoutil.js
-                //f_get_selected();           //Load line info into the andon lider
+             
+                f_get_estado2(); //Traerse la información de todos los planes de la linea             
+                f_set_catScrap();
                 f_ConInfoAndon(); 
                 f_get_station(vstation);
                 f_util_get_local_help();                       

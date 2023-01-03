@@ -23,7 +23,9 @@
                       <th>Orden de Trabajo</th>
                       <th>Modelo</th>
                       <th>Lote</th>  
-                      <th>Plan</th>          
+                      <th>Plan</th>                                
+                      <th>Cantidad de asociados</th>     
+                         
                       <th>Estado</th>
                     </tr>
                   </thead>
@@ -53,6 +55,7 @@
                      <td>{{$var['name']}}</td>
                      <td>{{$var['lotId']}}</td>
                      <td>{{$var['plan']}}</td>
+                     <td>{{$var['cantasoc']}}</td>                    
                      <td>
                        @if($var['condicion']==1)
                          <div>
@@ -111,6 +114,12 @@
                               <label class="col-md-3 form-control-label" for="text-input">Plan</label>
                               <div class="col-md-9">
                                   <input type="number" class="form-control" name="plan" placeholder="Plan" maxlength="30" required>
+                              </div>
+                            </div> 
+                            <div class="form-group row">
+                              <label class="col-md-3 form-control-label" for="text-input">Cantidad de asociados</label>
+                              <div class="col-md-9">
+                                  <input type="number" class="form-control" name="cantasoc" placeholder="Cantidad de asociados" maxlength="15" required>
                               </div>
                             </div> 
 

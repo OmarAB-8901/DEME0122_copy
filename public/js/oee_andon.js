@@ -1,6 +1,6 @@
 function f_callOEE(){         //ver si en otra parte lo llaman para que se muestre
  
- 
+  console.log("calculo");
  
   $.ajaxSetup({
   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -13,19 +13,21 @@ function f_callOEE(){         //ver si en otra parte lo llaman para que se muest
           if(response.length>0){   
              
               response[0].forEach(function (elemento, indice) {                  
-                  option_oee.series[0].data[0].value=elemento['oee'];
-                  myChart_oee.setOption(option_oee);
+                  option_oee.series[0].data[0].value=elemento['oee'];                
+                 
                   option_dis.series[0].data[0].value=elemento['disponibilidad'];
-                  myChart_dis.setOption(option_dis);
+                  
                   option_prod.series[0].data[0].value=elemento['eficiencia']; //prod eficiencia
                   myChart_dis.setOption(option_prod);
                   option_cal.series[0].data[0].value=elemento['calidad']; 
                   myChart_cal.setOption(option_cal);
 
               });       
-   
+              myChart_oee.setOption(option_oee);
+              myChart_dis.setOption(option_dis);
 }   
 }
+
 
 });
 /*fin  de dsacar los grupos*/

@@ -13,7 +13,7 @@ function wait(espera_segundos) {
     document.getElementById("clock").innerHTML = moment().format('DD/MM/YYYY HH:mm:ss ');
     setTimeout("f_setClock()",1000);
   }
-//button/andon/coninfoestacion/{param1}/{param2}/{param3}
+
 
 
 
@@ -39,7 +39,8 @@ function f_get_station(vstation){
                                                           let a1={
                                                               id:       parseInt(elemento['id']),
                                                               pos:      elemento['position'] ,
-                                                              estacion: elemento['estacion']       
+                                                              estacion: elemento['estacion'] ,      
+                                                              button:   elemento['btn']       
 
                                                           };                                                      
                                                           station_array.push(  a1 );
@@ -83,7 +84,7 @@ function f_get_station(vstation){
                                                             }); 
                             let aotros={
                                 id:     99,
-                                name:   'Verificiacion de linea'
+                                name:   'Personal'
                             }
                             help_array.push(aotros);
                             localStorage.setItem("catHelp",JSON.stringify(help_array));
@@ -102,10 +103,9 @@ function f_get_station(vstation){
 var vgrupo;
 var vestacion;
 function f_callTelegram(vgrupo,vchart,vidShift,vmensaje){    
-      let urlSend=    getLocalStorage("URLPLC");
-    console.log("envio de mensaje");
+      let urlSend=    getLocalStorage("URLPLC");    
       let messageStructure = {
-        idGroup: 2,
+        idGroup: vgrupo,
         idChart: vchart,    
         idShift: vidShift,
         dbMensaje: false,
@@ -168,24 +168,27 @@ function f_ConInfoAndon(){
     contenidoCentro.innerHTML=` <div class="row">
                                   <div class="col-xl-6">
                                       <div class="card-body">
-                                          <h5 class="card-title">Progreso de la linea</h5>   
+                                          <h2 class="card-title text-dark">Progreso de la linea</h2>   
                                           <div class="row">
-                                            <div class="col-xl-6">  
-                                                <h2>20</h2>
+                                            <div class="col-xl-6 bg-devicorredgray text-white text-center">  
+                                                <h4>Piezas OK</h4>
                                             </div>
-                                            <div class="col-xl-6">  
-                                              <h2>80</h2>
+                                            <div class="col-xl-6 bg-devicorredgray text-white text-center">  
+                                              <h4>Piezas Defectuosas</h4>
                                             </div>
-
+                                          </div>        
+                                          <div class="row">
+                                            <div class="col-xl-6 text-center bg-danger  text-white">  
+                                                <h4 id="pzasOk" >0</h4>
+                                            </div>
+                                            <div class="col-xl-6 text-center bg-danger  text-white">  
+                                              <h4 id="pzasDefec">0</h4>
+                                            </div>
                                           </div>                                                                        
+
                                       </div>
                                   </div>
-                                  <div class="col-xl-6">  
-                                    <div class="card-body">
-                                        <h5 class="card-title">Eficiencia de la linea</h5>                                                                           
-                                        <div class="echarts" id="chart-panel_avance" style="width: 400px; height:250%;"></div>  
-                                    </div>
-                                  </div>
+                                  
                                 </div>
                                 <div class="row">
                                   <div class="col-xl-12">
@@ -199,6 +202,9 @@ function f_ConInfoAndon(){
 
     var lblmodelo= document.getElementById("lblModelo");
     var lbldescripcionmodelo=document.getElementById("lblDescripcionModelo");
+    var lblpzashora=document.getElementById("lblPiezasHora");
+    var lblplan=document.getElementById("lblPlan");
+
     varh = [];
     varl = [];
     mensaje = "";
@@ -232,6 +238,12 @@ function f_ConInfoAndon(){
                   lblmodelo.innerHTML="<h4>" + elemento[0]["modelo"] +"</h4>";
                   lbldescripcionmodelo.innerHTML="<h4>" + elemento[0]["descmodelo"] +"</h4>";
 
+                  lblpzashora.innerHTML="<h4>" + elemento[0]["pzashora"] +"</h4>";
+                  lblplan.innerHTML=  "<h4>" + elemento[0]["total"] +"</h4>";
+
+
+
+
                    /*
                    '<tr><td><h4>Porcentaje de avance: </h4></td><td><h4>' +  elemento[0]["porcentaje"] + '%</h4></td></tr>' +
                    '<tr><td><h4>Fin produccion: </h4></td><td><h4>' +  elemento[0]["ffinplan"] + '</h4></td></tr>' +
@@ -250,31 +262,90 @@ function f_ConInfoAndon(){
 
 
   //View the workplan into the select item into the lider module
-function f_get_estado(){  
-    select = document.getElementById("planes");
-    varh = [];
-    varl = [];
-    mensaje = "";
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $.ajax({
-        url: '/button/andon/coninfoandon/2/1/1',
-        type: 'GET',
-        success: function (response) {
-            if(response.length>0){     
-             
-             var i=0;
-                    response[0].forEach( (elemento, index)=> {                                             
-                        option = document.createElement("option");
-                        option.value = elemento['id'];
-                        option.text = elemento['nombre'];
-                        select.appendChild(option);
-                        
-                    });             
-            }  
-        }      
-    });
+
+var listaPlanes=[];
+
+function f_get_estado2(){    
+      //  var listaPlanes=[];
+      select = document.getElementById("planes");    
+        mensaje = "";
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/button/andon/coninfoandon/2/1/1',
+            type: 'GET',
+            success: function (response) {
+                  if(response.length>0){                
+                  
+                          response[0].forEach( (elemento, index)=> {                                             
+                            let objPlanes={
+                              id:       elemento['id'],
+                              wo:       elemento['wo'],
+                              nombre:   elemento['nombre'],
+                              cantasoc: elemento['cantasoc'],
+                              lote:     elemento['lote'],
+                              ict:      elemento['ict'],
+                              estado:   elemento['estadoplanes']
+                            }
+                              listaPlanes.push(objPlanes);
+
+                              option = document.createElement("option");
+                              option.value = listaPlanes[index]['id'];
+                              option.text = listaPlanes[index]['wo'] + '' + listaPlanes[index]['nombre'];
+                              select.appendChild(option);                 
+                              
+                          });             
+                    }       
+                }      
+          });
+    }
+
+var listaScrap=[]; 
+function f_set_catScrap(){
+
+      //  var listaPlanes=[];
+      select = document.getElementById("planes");    
+        mensaje = "";
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/button/andon/coninfoandon/4/1/1',
+            type: 'GET',
+            success: function (response) {
+                  if(response.length>0){                
+                  //{,"defectosaceptados":"5","codigo":"3","":"1","tiposcrap":"AJUSTES (Set-up)","idgroup":"6","gruponame":"Produccion"},
+                          response[0].forEach( (elemento, index)=> {                                             
+                           
+                              listaScrap.push(new Scrap(
+                                elemento['id'],
+                                elemento['scrapname'],
+                                elemento['scrapdescription'],
+                                elemento['defectosaceptados'],
+                                elemento['codigo'],
+                                elemento['idtiposscrap'],       
+                                elemento['tiposcrap'],                                                                
+                                elemento['idgroup'],
+                                elemento['gruponame']
+                              ) );
+
+                              
+                          });             
+                    }       
+                }      
+          });
+
+
+
 }
+
+
+
+
+
+

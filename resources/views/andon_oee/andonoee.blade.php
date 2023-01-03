@@ -23,7 +23,14 @@
                              </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="echarts" id="chart-panel_oee" style="width: 500px; height: 450px;"></div>                                     
+                                    <div class="col-xl-12">
+                                        <div class="echarts" id="chart-panel_oee" style="width: 500px; height: 450px;"></div>                                      
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <h2 id="lbloee"></h2>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -88,7 +95,8 @@
                myChart_cal.resize();
                myChart_dis.resize();
                myChart_prod.resize();
-               f_callOEE();
+               timeEscucha= setInterval(f_callOEE,10000);
+               
            });
       });
    
