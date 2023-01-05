@@ -20,6 +20,7 @@
                       <th>Descripción</th>
                       <th>Cantidad</th>
                       <th>Es Defecto</th>
+                      <th>Cambiar status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -41,7 +42,20 @@
                            <span class="badge badge-danger">No</span>
                        </div>
                        @endif
-                   </td>
+                     </td>
+                     <td>
+                      @if($var['isdefect']==0)
+                      <button type="button"  title="Defecto" class="btn btn-circle btn-sm" data-toggle="modal" data-target="#myModalDesactivar{{$var['id']}}">
+                        <img src="{{ asset('img/icono_isdefecto.png')}}" height="35">
+                      </button>
+                      @include('calidad.delete')
+                    @else
+                        <button type="button"  title="No defecto" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#myModalActivar{{$var['id']}}">
+                          <i class="fas fa-check"></i>
+                        </button>
+                        @include('calidad.activar')
+                    @endif
+                     </td>
                     </tr>
                   @endforeach
                   </tbody>
