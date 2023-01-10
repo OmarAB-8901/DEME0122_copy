@@ -131,6 +131,8 @@ Route::group(['middleware'=>['auth']],function(){
 
     Route::group(['middleware' => ['Calidad']], function () {
         Route::get  ('/calidad',                     'CalidadController@index')->name('calidad');
+        Route::put  ('/calidad/desactivar',          'CalidadController@desactivar')->name('c_desactivar');
+        Route::put  ('/calidad/activar',             'CalidadController@activar')->name('c_activar');
     });
     Route::group(['middleware' => ['Plan']], function () {
         Route::get  ('/planes',                     'PlanesController@index')->name('planes');
