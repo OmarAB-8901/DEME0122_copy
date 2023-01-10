@@ -201,6 +201,7 @@ function f_ConInfoAndon(){
                                 
 
     var lblmodelo= document.getElementById("lblModelo");
+
     var lbldescripcionmodelo=document.getElementById("lblDescripcionModelo");
     var lblpzashora=document.getElementById("lblPiezasHora");
     var lblplan=document.getElementById("lblPlan");
@@ -214,42 +215,22 @@ function f_ConInfoAndon(){
           }
       });
     $.ajax({
-        url: '/button/andon/coninfoandon/1/1/1',
+        url: '/button/andon/coninfoandon/1/'+ vstation +'/1',
         type: 'GET',
         success: function (response) {
             if(response.length>0){            
                 response.forEach(function (elemento, indice) {        
-                  /* 
-                  elementoTable.innerHTML=elementoTable.innerHTML +                                         
-                  '<tr><td><h4>Produccion: </h4></td><td><h4>Del:  ' +  elemento[0]["finicioplan"] + ' al ' + elemento[0]["ffinplan"]  + '</h4></td></tr>' +                  
-                  '<tr><td><h4>Defectos detectados: </h4></td><td><h4>' +  elemento[0]["defectos"] + '</h4></td></tr>' +                  
-                  '<tr><td><h4>Scrap: </h4></td><td><h4>' +  elemento[0]["scraps"] + '</h4></td></tr>' 
-                  */
-                  //grafica de porcentaje de avance
-                 // option_oee.series[0].data[0]=elemento[0]["porcentaje"]
-                  //myChart_oee.setOption(option_oee);
-
-                  //option_avance.series[0].data[0]=elemento[0]["goodpart"]
-                  //myChart_avance.setOption(option_avance);
-                  //option_avance.series[1].data[0]=elemento[0]["diferencia"]
-                  //myChart_avance.setOption(option_avance);
-                 // lblincidencia.innerHTML= '<h4> Incidencia ' + elemento[0]["paro"]  + '</h4>'
-                    
+                  
+                    console.log(elemento);
                   lblmodelo.innerHTML="<h4>" + elemento[0]["modelo"] +"</h4>";
                   lbldescripcionmodelo.innerHTML="<h4>" + elemento[0]["descmodelo"] +"</h4>";
 
                   lblpzashora.innerHTML="<h4>" + elemento[0]["pzashora"] +"</h4>";
                   lblplan.innerHTML=  "<h4>" + elemento[0]["total"] +"</h4>";
 
-
-
-
-                   /*
-                   '<tr><td><h4>Porcentaje de avance: </h4></td><td><h4>' +  elemento[0]["porcentaje"] + '%</h4></td></tr>' +
-                   '<tr><td><h4>Fin produccion: </h4></td><td><h4>' +  elemento[0]["ffinplan"] + '</h4></td></tr>' +
-                   'Planeado:   elemento[0]["total"], Producido:   elemento[0]["goodpart"] Diferencia:  elemento[0]["diferencia"]                  
-                   */
-                  
+                  console.log('piezasokk' + elemento[0]["piezasok"]);
+                  document.getElementById("pzasOk").innerHTML=`<h4>${elemento[0].goodpart}</h4>`;
+                   
   
                 });
                
@@ -275,7 +256,7 @@ function f_get_estado2(){
             }
         });
         $.ajax({
-            url: '/button/andon/coninfoandon/2/1/1',
+            url: '/button/andon/coninfoandon/2/'+ vstation +'/1',
             type: 'GET',
             success: function (response) {
                   if(response.length>0){                
@@ -346,6 +327,21 @@ function f_set_catScrap(){
 
 
 
-
+var ListEventsType=[];
+function f_GetEventsType()
+{   
+  ListEventsType=[{id:5,nombre:'Despeje de Linea',              inicial:'A'},
+                {id:6,nombre:'Liberacion de Linea Mtto. Set Up',inicial:'B'},
+                {id:7,nombre:'Tiempo muerto de maquinas',inicial:'C'},
+                {id:8,nombre:'Faltante de Materiales',inicial:	'D'},
+                {id:9,nombre:'Faltante de etiquetas',inicial:'E'},
+                {id:10,nombre:'Mal ensamble',inicial:'F'},
+                {id:11,nombre:'Entrenamiento',inicial:'G'},
+                {id:12,nombre:'Falta de personal',inicial:'H'},
+                {id:13,nombre:'	Problemas de calidad',inicial:'I'},
+                {id:14,nombre:'Almacen',inicial:'J'},
+                {id:15,nombre:'Falta de plan',inicial:'K'},
+                {id:16,nombre:'Otros',inicial:'L'}]
+}
 
 

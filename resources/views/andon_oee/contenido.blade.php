@@ -60,9 +60,7 @@
             <footer class="sticky-footer">
                 <div class="container my-auto">
                     <p class="elementor-heading-title elementor-size-default">&copy; {{ date("Y") }} Devicor Medical Products, Inc.</p>
-                    <div class="copyright text-center my-auto">
-                        <span><img src="{{ asset('img/Logo_Sinci_Simplificada.png')}}" height="20"></span>
-                    </div>
+                    
                 </div>
             </footer> 
             <!-- End of Footer -->

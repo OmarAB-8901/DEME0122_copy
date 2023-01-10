@@ -5,13 +5,14 @@
         <!--Declaracion de variables-->
         <input type="hidden" id="IdStation" name="IdStation" value="0">        
         <input type="hidden" id="AyudaPLC" name="IdStation" value="0">  
-        <!------------------------------    END OF VARIABLES    ------------------------------------>
+        <!------------------------------    END OF VARIABLES    ------------------------------------->
     <div class="row">
         <div  class="col-xl-12" id="menu">
 
             <nav class="navbar  ">                        
                          <a class="navbar-brand" href="#">
                         <img src="/img/Mammotomelarge.jpg" width="506" height="60" alt=""> </a>
+                        
                         @foreach($linea as $varline)
                             <input type="hidden" id="lineId" name="lineId" value="{{$varline['id']}}"> </input>
                             <input type="hidden" id="lineDesc" name="lineDesc" value="{{$varline['name']}}"> </input>
@@ -178,8 +179,14 @@
                             <div class="row"  >
                                 <div class="col-xl-12" id="cardBodyCenter"></div>
                             </div>
+                            <div class="row"  >
+                                <div class="col-xl-12" id="tblPersonalOpcion"></div>
+                            </div>
+                            <div class="row"  >
+                                <div class="col-xl-12" id="tblPersonalOpcion2"></div>
+                            </div>
                             <div class="row" >
-                                <div class="col-xl-6">
+                                <div class="col-xl-12">
                                     <div class="card shadow"   > 
                                         <div class="card-header  bg-devicorinfo  rounded" id="HeaderWorkOrder" >
                                             <h3 class="m-0 font-weight-bold text-primary text-light " style="text-align:center">Eficiencia de la linea:</h3>
@@ -234,7 +241,7 @@
                 f_set_dataLine();           //Set into local storage dataline
                 f_setClock();               //Set the time permanently;
                          //Load the andon's information OEE, Events and WorkPlan, the graphical status
-                
+                         f_GetEventsType()
               
                         //Listen PLC's signals
             });

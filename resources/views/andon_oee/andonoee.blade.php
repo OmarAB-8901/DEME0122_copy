@@ -90,14 +90,15 @@
 <script>
     $(document).ready(function()
        {
-           window.addEventListener('resize',function(){
-               myChart_oee.resize();
-               myChart_cal.resize();
-               myChart_dis.resize();
-               myChart_prod.resize();
-               timeEscucha= setInterval(f_callOEE,10000);
+            timeEscucha= setInterval(f_callOEE,10000);
+           /*window.addEventListener('resize',function(){
+               //myChart_oee.resize();
+               //myChart_cal.resize();
+               //myChart_dis.resize();
+               //myChart_prod.resize();
+              
                
-           });
+           });*/
       });
    
 </script>

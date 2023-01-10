@@ -20,4 +20,18 @@ class AndonScorecardController extends Controller
         
         return view('andon_scorecard.andonscore')->with(compact('date','machines'));
     }
+
+    public function consultascore($param1,$param2,$param3)
+    {
+        $DB_SP = "EXECUTE";
+        $DB_SP_START= "";
+        $DB_SP_END= "";        
+        $consultascored =DB::select($DB_SP.' sp_ConsultaProduccion  '.$DB_SP_START.'?,?,?'.$DB_SP_END,array($param1,$param2,$param3));              
+        return array ( $consultascored );
+
+    }
+    
+    
+
+
 }

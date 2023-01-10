@@ -4,7 +4,7 @@
 */
 //Cambiar la producción
 
-//const { memoize } = require("lodash");
+
 
 var banderaSolicitud=0;
 var tickftimeratencion
@@ -91,10 +91,11 @@ async function f_ListenPLC(){
             try { 
                 
                 var tag = JSON.stringify({tag: "ns=3;s=["+urlSend.namePLC+"]linea_entradas_andon["+ lineData.id +"].sol_lider", type: "Int32"});            
-                var solLider = 0// await fetch(urlSend.urlPLC+urlSend.urlPLCrd+tag, headers).then(response => response.json()).then(data => data.data);            
+                var solLider =  await fetch(urlSend.urlPLC+urlSend.urlPLCrd+tag, headers).then(response => response.json()).then(data => data.data);            
                 
                 
                 if (solLider == 1){         
+                    
                     f_MostrarEstaciones();
                     clearInterval( timeEscuchaPLC);                  
                 }
@@ -114,12 +115,14 @@ async function f_ListenPLC(){
                 }   */          
             }
             catch(err) {
+                console.log(err.message);
+                /*
                 swal(
                     'Error conexion datos de produción Errno:24',
                     err.message,
                     'error'
 
-                );
+                );*/
             }
             
             
@@ -127,34 +130,43 @@ async function f_ListenPLC(){
 
 async function    f_MostrarEstaciones(){               
                 /*Se debe de agregar las botoneras que se presionan */
+                let headers = {
+                    method: 'GET',
+                    headers: {"content-type": "application/json; charset=utf-8"}
+                };
+                
                 let lEstaciones =   getLocalStorage("estaciones");  
                 let urlSend     =   getLocalStorage("URLPLC");
                 let lineData    =   getLocalStorage("lineData");
                     let btnsignal={btn:0,signal:0 };              
                     let aux=1;
                         while (aux <= 4) {	                    
-                            //    console.log(aux);
-                                var tag = JSON.stringify({tag: "ns=3;s=["+urlSend.namePLC+"]linea_entradas_andon["+ lineData.id +"].Operador["+ aux +"]", type: "Int32"});            
-                                var operador =1// await fetch(urlSend.urlPLC+urlSend.urlPLCrd+tag, headers).then(response => response.json()).then(data => data.data);
-                                if (operador==1) { 
+                            
+                                var tag = JSON.stringify({tag: "ns=3;s=["+urlSend.namePLC+"]linea_entradas_andon["+ lineData.id +"].operador["+ aux +"]", type: "Int32"});            
+                                var operador = await fetch(urlSend.urlPLC+urlSend.urlPLCrd+tag, headers).then(response => response.json()).then(data => data.data);
+                                  // console.log(operador);
+                                //console.log(urlSend.urlPLC+urlSend.urlPLCrd+tag);
+
+                                if (operador==true) { 
                                     btnsignal.btn=aux;
-                                    btnsignal.signal=operador;
+                                    btnsignal.signal=1;
                                     aux=5;}
                                     aux++;
-                            }
+                                    }
                             
-                           // btnsignal.btn=3;  // etse es para el boton que presionation
+                         //   btnsignal.btn=3;  // etse es para el boton que presionation
                            // btnsignal.signal=1; //este es para la se;at de que si se efetuo\
 
 
                            // console.log(btnsignal.btn);
-                         
+
                 var HeaderEficiencia=document.getElementById('HeaderPanelCenter');
                 HeaderEficiencia.innerHTML= `<h2 class='m-0 font-weight-bold text-primary  text-light' style='text-align:center'>
                                             Solicitud de apoyo
                                             </h2>`;   
-                var divEstaciones = document.getElementById('cardBodyCenter');              
+                var divEstaciones = document.getElementById('cardBodyCenter');                              
                 divEstaciones.innerHTML="";
+                divEstaciones.style.backgroundColor = 'orange';
                 for (let index=0;index<lEstaciones.length;index++){
                         let ogroup= lEstaciones[index];
                         if (ogroup.button==btnsignal.btn ) {
@@ -367,7 +379,7 @@ async function  f_writeDataOK(OKDATA) {
 
 
 
-
+var idEventos="";
 
 //------------------------------------------------------------------------------------------------
 var ListAtencion=[];
@@ -376,6 +388,7 @@ var vgroup;
             //console.log("grupoayuda"+vgroup);
            let lineData=   getLocalStorage("lineData");
             var elementoTable = document.getElementById('cardBodyCenter');
+            var elemtablePersonal=document.getElementById('tblPersonalOpcion'); //tblPersonalOpcion
             elementoTable.innerHTML=elementoTable.innerHTML+ `<div  class="row form-group"><div class="col-xl-6">
             <h4 id="timeratencion">00:00:00</h4>
             </div></div>`;
@@ -389,12 +402,12 @@ var vgroup;
                     
                     if(response.length>0){   
                        let contador1=0;
-                       
+                       //elementoTable.innerHTML=elementoTable.innerHTML+'<div id="tblGroupPersonal">';
                         response[0].forEach(function (elemento, indice) {                            
-                            elementoTable.innerHTML=elementoTable.innerHTML +      
+                            elemtablePersonal.innerHTML=elemtablePersonal.innerHTML +      
                             `<div class="row form-group"><div class="col-xl-6"><h4>Personal: ${elemento["name"]}</h4></div> 
-                             <div class="col-xl-6"><button class="btn btn-secondary btn-block" onclick="f_atender( ${elemento["id"]})">Atender</button></div>
-                            </div>`;     
+                            <div class="col-xl-6"><button class="btn btn-secondary btn-block" onclick="f_atender( ${elemento["id"]})">Atender</button></div></div>
+                           `;     
                            
                             contador1=contador1 + parseInt(elemento['time1'])
                             let objAtencion={                               
@@ -413,13 +426,10 @@ var vgroup;
                             }                           
                             ListAtencion.push(objAtencion);                            
                         });       
-                        elementoTable.innerHTML=elementoTable.innerHTML +
-                         `<div class="col-xl-12" id="Incidencia">
-                            <button onclick="f_SolucionarPeticionTemp() class="btn btn-block bg-devicor">
-                                Terminar operacion</button> 
-                            </div>`;
+                        elemtablePersonal.innerHTML=elemtablePersonal.innerHTML +  `</div>`;
                           
                         solApoyoParoLinea(vgroup);     
+                        
 
                         tickftimeratencion= setInterval( f_timerAtencion,1000);
              
@@ -470,13 +480,15 @@ var vgroup;
                                                 }   
                             }      
                             });
-                              
+                              document.getElementById('txtcantidad').value='';
+                              document.getElementById('txtDefecto').value='';
 
 
             }
 
 
             async function f_SolucionarPeticionTemp(){
+               // console.log("Temporales");
                 let urlSend=    getLocalStorage("URLPLC");
                 let lineData=   getLocalStorage("lineData");
                 var tag = JSON.stringify({tag: "ns=3;s=["+ urlSend.namePLC +"]linea_entradas_andon["+ lineData.id  + "].Return", type: "Int32", value: lineData.solarea });  
@@ -492,13 +504,58 @@ var vgroup;
                 var datoLeido = await fetch(urlSend.urlPLC+urlSend.urlPLCwr, headers).then(response => response.json()).then(data => data.data);
               }
 
-
+var vopcion=0;
 //-------------------------------------------------------------------------------------------------
 function f_atender(vatender) {
-        console.log("atender a:" + vatender)
+        
         let lineData=   getLocalStorage("lineData");
-        //var elementoTable = document.getElementById('cardBodyCenter');
-        //elementoTable.innerHTML='';
+        let catHelp= getLocalStorage("catHelp"); //Estar pendiente de quien atiende cuando se reasigna
+        document.getElementById("tblPersonalOpcion").style.display='none';
+        document.getElementById("HeaderPanelCenter").style.color="Red";
+        var elem = document.getElementById('tblPersonalOpcion2');
+        elem.innerHTML="";
+        /*Se atiende falta el boton dende incluye la linea de atencion */
+
+
+        /*
+        
+        Se establece la información de quien atiende.
+        */
+
+      
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+        $.ajax({
+            url: '/button/andon/seteventos/'+ lineData.id + '/' + lineData.solarea + '/'+ vatender +'/' + vopcion, 
+            type: 'GET',
+            success: function (response) {                    
+                        if(response.length>0){                          
+                                response[0].forEach(function (elemento) { 
+                                        console.log(elemento);
+                                        });    
+                                        
+                                        
+                                }   
+            }      
+            });
+
+
+
+
+
+        elem.innerHTML=  elem.innerHTML+`       <div class="row">
+                                                <div class="col-xl-12"><h4>Atiende: ${ListAtencion[vatender].name} </h4></div></div>
+                                                <div class="row">
+                                                <div class="col-xl-12" id="Incidencia">
+                                                        <button onclick="f_SolucionarPeticionTemp()" class="btn btn-block bg-devicor text-white">
+                                                        <h4>Finalizar Operación</h4></button></div></div>
+                                                <div class="row">
+                                                        <div class="col-xl-12">
+                                                            <button class="btn btn-block bg-devicor text-white" onclick='f_reasignar()'><h4>Reasignar</h4></button>
+                                                        </div>
+                                                </div>` ;
+         
     }
 
 
@@ -511,18 +568,83 @@ function f_timerAtencion(){
     if (secondsatencion==1){
         let lineData=   getLocalStorage("lineData");
             //Se enviara id group pero se le preguntara a Carlos Omar
-            f_callTelegram(ListAtencion[0].idgroupt ,ListAtencion[0].id,lineData.id,"Suceso en la linea" + lineData.name + " estacion:"  + lineData.solareaName );
+
+            f_callTelegram(ListAtencion[0].idgroup ,ListAtencion[0].id,lineData.id,"Suceso en la linea:" + lineData.name + " estacion:"  + lineData.solstation );
             timeratencion=ListAtencion[0].acumulado1;            
-            console.log('timer:' + timeratencion);
+            //console.log('timer:' + timeratencion);
         }
     else if (secondsatencion==timeratencion){            
             auxatencion++;
-            f_callTelegram(ListAtencion[auxatencion].idgroup ,ListAtencion[auxatencion].id,lineData.id,"Suceso en la linea" + lineData.name + " estacion:"  + lineData.solareaName );
+            f_callTelegram(ListAtencion[auxatencion].idgroup ,ListAtencion[auxatencion].id,lineData.id,"Suceso en la linea" + lineData.name + " estacion:"  + lineData.solstation );
             timeratencion=ListAtencion[auxatencion].acumulado1;            
-            console.log( 'timer 180:' + timeratencion);
+            //console.log( 'timer 180:' + timeratencion);
         }
 
     let duration=moment.duration(secondsatencion,'seconds');   
     document.getElementById("timeratencion").innerHTML =duration.hours() + ':' + duration.minutes() + ':' + duration.seconds();    
     secondsatencion ++;
 }
+
+/* La funcion para los eventos
+function f_consultaEvento(){
+
+    ///--------------------------------------
+
+          
+           $.ajaxSetup({
+           headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+           });
+           //http://127.0.0.1:8000/button/andon/coneventos/1/100/1
+           $.ajax({
+               url: '/button/andon/orgchart/2/' + vgroup + '/1',
+               type: 'GET',
+               success: function (response) {
+                   
+                   if(response.length>0){   
+                      let contador1=0;
+                      
+                       response[0].forEach(function (elemento, indice) {                            
+                           elementoTable.innerHTML=elementoTable.innerHTML +      
+                           `<div class="row form-group"><div class="col-xl-6"><h4>Personal: ${elemento["name"]}</h4></div> 
+                            <div class="col-xl-6"><button class="btn btn-secondary btn-block" onclick="f_atender( ${elemento["id"]})">Atender</button></div>
+                           </div>`;     
+                          
+                           contador1=contador1 + parseInt(elemento['time1'])
+                           let objAtencion={                               
+                               id:             elemento['id'],
+                               name:           elemento['name'],
+                               time1:          elemento['time1'],
+                               time2:          elemento['time2'],
+                               telegramId:     elemento['telegramId'],
+                               ord_num:        elemento['ord_num'],
+                               tipoatencion:   elemento['tipo'],
+                               acumulado1:     contador1,
+                               idgroup:        elemento['idgroup'],
+                               idgroupt:       elemento['idgroupt'],
+                               shiftid:        elemento['shiftId'],
+                               lineData:       lineData.id                                    
+                           }                           
+                           ListAtencion.push(objAtencion);                            
+                       });       
+                       elementoTable.innerHTML=elementoTable.innerHTML +
+                        `<div class="col-xl-12" id="Incidencia">
+                           <button onclick="f_SolucionarPeticionTemp()" class="btn btn-block bg-devicor">
+                               Terminar operacion</button> 
+                           </div>`;
+                         
+                       solApoyoParoLinea(vgroup);     
+                       
+
+                       tickftimeratencion= setInterval( f_timerAtencion,1000);
+            
+             //Se comenta para poder avanzar
+         }   
+     }
+     
+   });
+    
+
+
+    //--------------------------------------
+}
+*/

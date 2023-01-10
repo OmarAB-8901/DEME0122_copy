@@ -37,8 +37,7 @@ class PlanesController extends Controller
     {
         $planes = Planes::findOrFail($request->id);
         $planes->work_order = $request->orden_trabajo;
-        $planes->model = $request->model;
-        $planes->idmachine = $request->idmachine;
+        $planes->model = $request->model;       
         $planes->lotId= $request->lote;
         $planes->plan = $request->plan;
         $planes->cantasoc= $request->cantasoc;
