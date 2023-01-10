@@ -12,7 +12,7 @@
                                             <form action="{{route('sc_desactivar')}}" role="form" method="post"  class="form-horizontal">
                                             {{ csrf_field() }} {{method_field('PUT')}}
                                                 <div class="form-group row">
-                                                Esta seguro de desactivar esta maquina?
+                                                Esta seguro de desactivar este defecto?
                                                     <div class="col-md-9">
                                                         <input type="hidden" class="form-control" name="id"  value="{{$var['id']}}" required> 
                                                     </div>
