@@ -12,10 +12,10 @@
                                             <form action="{{route('ar_edit')}}" role="form" method="post"  class="form-horizontal">
                                             {{ csrf_field() }} {{method_field('PUT')}}
                                                 <div class="form-group row">
-                                                    <label class="col-md-3 form-control-label" for="text-input">Área</label>
+                                                    <label class="col-md-3 form-control-label" for="text-input">Estación</label>
                                                     <div class="col-md-9">
                                                         <input type="hidden" class="form-control" name="id"  value="{{$var['id']}}" required> 
-                                                        <input type="text" class="form-control" name="name" placeholder="Nombre del Área" value="{{$var['namearea']}}" maxlength="30" required>
+                                                        <input type="text" class="form-control" name="name" placeholder="Nombre del Estación" value="{{$var['namearea']}}" maxlength="30" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">

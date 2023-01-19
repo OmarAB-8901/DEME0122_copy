@@ -14,10 +14,12 @@ class PlanesController extends Controller
     public function index(Request $request)
     {
         $planes = Planes::join('models','models.id','=','planes.model')        
-        ->select('planes.id','work_order','model','models.name','lotId','plan','planes.condicion','cantasoc')->orderBy('work_order', 'asc')->get();
+        ->select('planes.id','work_order','model','models.name','lotId','plan','planes.condicion','cantasoc') 
+        ->where('planes.condicion','=',1)
+        ->orderBy('work_order', 'desc')->get();
 
         $models = Models::select('id','name')->orderBy('name', 'asc')->get();
-
+            
         return view('planes.index')->with(compact('planes','models'));
     }
     

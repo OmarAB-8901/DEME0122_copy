@@ -3,7 +3,7 @@ var chart_oee = document.getElementById('chart-panel_oee');*/
 var chart_avance = document.getElementById('chart-panel_avance'); 
 
 /*var myChart_oee = echarts.init(chart_oee);*/
-var myChart_avance=echarts.init(chart_avance);
+myChart_avance=echarts.init(chart_avance);
 /*var myChart_defectos=echarts.init(chart_defectos); */
 var option_oee;
 
@@ -62,8 +62,6 @@ option_oee = {
     }
   ]
 };
-
-
 
 option_avance={
     
@@ -176,7 +174,6 @@ option_defectos={
       data: [1]
     }
   ]
-
 };
 /*=======================================================Fin de defectos ============================================*/
 

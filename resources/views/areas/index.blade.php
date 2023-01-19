@@ -5,7 +5,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Catálogo de Áreas
+              <h6 class="m-0 font-weight-bold text-primary">Catálogo de Estaciones
               <button  data-toggle="modal" data-target="#myModalNuevo" class="btn btn-success btn-icon-split btn-sm">
                     <span class="text">Nuevo</span>
                     <span class="icon text-white-50">
@@ -22,7 +22,7 @@
                     <tr>
                       <th>Opciones</th>
                       <th>Posición</th>
-                      <th>Áreas</th>
+                      <th>Estaciones</th>
                       <th>Línea</th>          
                       <th>Estado</th>
                     </tr>
