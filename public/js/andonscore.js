@@ -330,8 +330,7 @@ var option_availability = {
                                   document.getElementById( "act_oee").innerHTML=`Modelo: ${elemento['modelo']} <hr> ${elemento['ultact']} `
                                   document.getElementById( "act_performance").innerHTML=`Modelo: ${elemento['modelo']} <hr> ${elemento['ultact']} `
                                   document.getElementById( "act_quality").innerHTML=`Modelo: ${elemento['modelo']} <hr> ${elemento['ultact']} `
-                                  document.getElementById("lbllinea").innerHTML=`<h1 id="lbllinea" class="m-0 font-weight-bold text-white" style="text-align:left">
-                                  Estad&iacute;stica: L&iacute;nea: ${elemento['linea']}</h1>`;
+                                  document.getElementById("lbllinea").innerHTML=`<h1 id="lbllinea" class="m-0 font-weight-bold text-white" style="text-align:left"> Score Card: L&iacute;nea: ${elemento['linea']}</h1>`;
                                   myChart.setOption(option_oee);
                                   myChartPerformace.setOption(option_performace);   
                                   myChartQuality.setOption(option_quality);

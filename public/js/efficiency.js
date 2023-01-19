@@ -20,7 +20,8 @@ async function f_getTag(){
       }
   };
 
-  var urlPLC='http://10.11.25.34:1880/'
+//   var urlPLC='http://10.11.25.34:1880/'
+  var urlPLC='http://127.0.0.1:1880/'
   var tag = JSON.stringify({tag: "ns=3;s=[PLC_ANDON]linea_entradas_andon[1].sol_lider", type: "Int32"});
   var datoLeido = await fetch(urlPLC+"sbl_tags/readTagData?data="+tag, headers).then(response => response.json()).then(data => data.data);
   console.log(datoLeido);

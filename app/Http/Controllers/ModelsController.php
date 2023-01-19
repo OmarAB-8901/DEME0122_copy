@@ -41,7 +41,7 @@ class ModelsController extends Controller
         $models->name = $request->name;
         $models->description = $request->description;
         $models->valor_std= $request->valor_std;
-        $models->idmachine = $request->idmachine;
+       // $models->idmachine = $request->idmachine;
         $models->condicion = '1';
         $models->save();
         return Redirect::to('/models');

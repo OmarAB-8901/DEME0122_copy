@@ -48,7 +48,7 @@
                             <button type="button"  title="Activar" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#myModalActivar{{$var['id']}}">
                                 <i class="fas fa-check"></i>
                             </button>
-                            @include('parts.activar')
+                            @include('planes.activar')
                         @endif
                      </td>
                      <td>{{$var['work_order']}}</td>

@@ -55,8 +55,6 @@ $(document).ready(function() {
 
                 var resQuality = elemento.qualityG+'%';
                 $("#resQuality").html(resQuality);
-
-
             });
             if (response[1][0].date == null) {
                             

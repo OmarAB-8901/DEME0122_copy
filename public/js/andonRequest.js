@@ -13,9 +13,12 @@ function f_save_LineData(vidline,vlinename,vstation,vsolarea,vsolareaname){
 function f_save_UrlServerAPIs(){
     //Save de URL into local Storage FEME}
     let URLRequest={
-            urlTelegram:    "http://10.11.30.126:1880",
-            urlPLC:         "http://10.11.30.126:1880",
-            urlServer:      "http://10.11.30.126:1880",
+    //         urlTelegram:    "http://10.11.30.126:1880",
+    //         urlPLC:         "http://10.11.30.126:1880",
+    //         urlServer:      "http://10.11.30.126:1880",
+            urlTelegram:    "http://127.0.0.1:1880",
+            urlPLC:         "http://127.0.0.1:1880",
+            urlServer:      "http://127.0.0.1:1880",
             urlPLCwr:       "/sbl_tags/writeTags",
             urlPLCrd:       "/sbl_tags/readSolLider?data=",
             urlTelwr:       "/sbl/sendTelegramMessage",

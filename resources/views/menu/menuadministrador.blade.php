@@ -21,7 +21,8 @@
             <a class="collapse-item" href="{{route('machine')}}">Catálogo de l&iacute;neas</a>
             <a class="collapse-item" href="{{route('planes')}}">Plan de Producción</a>
             <a class="collapse-item" href="{{route('models')}}">Catálogo de Modelos</a>
-            <a class="collapse-item" href="{{route('areas')}}">Catálogo de Áreas</a>
+            <!-- <a class="collapse-item" href="{{route('areas')}}">Catálogo de Áreas</a> -->
+            <a class="collapse-item" href="{{route('areas')}}">Catálogo de Estaciones</a>
             <a class="collapse-item" href="{{route('scrap')}}">Catálogo de Scrap</a>
             {{-- <a class="collapse-item" href="{{route('variable')}}">Variables</a> --}}
             {{-- <a class="collapse-item" href="{{route('typeevent')}}">Catálogo de Eventos</a> --}}

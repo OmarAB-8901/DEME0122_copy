@@ -113,7 +113,7 @@ option_avance={
       },
       data: [
         {
-          value: 0
+          value: 25
         }
       ]
     }

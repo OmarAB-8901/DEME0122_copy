@@ -1,5 +1,5 @@
 // Call the dataTables jQuery plugin
-$(document).ready(function() {
+$(document).ready(function () {
   $('#dataTable').DataTable({
     "pageLength": 50,
     "language": {
@@ -16,12 +16,11 @@ $(document).ready(function() {
       "search": "<img src='/img/icono_buscar.png' height='30'>",
       "zeroRecords": "Sin resultados encontrados",
       "paginate": {
-          "first": "Primero",
-          "last": "Ultimo",
-          "next": "Siguiente",
-          "previous": "Anterior"
-        }
+        "first": "Primero",
+        "last": "Ultimo",
+        "next": "Siguiente",
+        "previous": "Anterior"
+      }
     }
   });
-  
 });
