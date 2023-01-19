@@ -2,6 +2,7 @@
 $(document).ready(function () {
   $('#dataTable').DataTable({
     "pageLength": 50,
+    "order": [[0, 'desc'], [1, 'desc']],
     "language": {
       "decimal": "",
       "emptyTable": "No hay información",

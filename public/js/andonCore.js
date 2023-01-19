@@ -4,6 +4,8 @@
 */
 //Cambiar la producción
 
+
+
 var banderaSolicitud = 0;
 var tickftimeratencion
 
@@ -13,17 +15,22 @@ var estacion = {
     pos: 0
 }
 
+
 async function f_SetPlan() {
     var vid;
     let lineData = getLocalStorage("lineData");
 
     // vid = $("#planes").children(":selected").attr("value");
+    // vid = document.getElementById('planes').value
     vid = document.getElementById('planes').value.split(":")[1];
+    console.log(vid);
+
 
     let objPlanes2
     for (let objPlanes of listaPlanes) {
-
-        if (objPlanes.id == vid) {
+        console.log(listaPlanes);
+        // if (objPlanes.id==vid){        
+        if (objPlanes.lote == vid) {
 
             objPlanes2 = {
                 id: objPlanes['id'],
@@ -36,8 +43,6 @@ async function f_SetPlan() {
             }
         }
     }
-
-    // console.log( 'id:' + objPlanes2.id+" "+ objPlanes2.wo,objPlanes2.lote,objPlanes2.ict)
 
     let urlSend = getLocalStorage("URLPLC");
     let tags = {
@@ -62,14 +67,21 @@ async function f_SetPlan() {
             }
         };
 
-        await fetch(urlSend.urlPLC + urlSend.urlPLCwr, headers);
-    }
-127
-7
+        let responseOfWrite = await fetch(urlSend.urlPLC + urlSend.urlPLCwr, headers).then(json => json.json()).then(data => data);
 
-    let newPlan = document.getElementById('planes').value;
-    f_ConInfoAndon(true, newPlan);
+        if (tag.tag == "ns=3;s=[PLC_ANDON]BD_Entradas_OEE.parteid[" + lineData.id + "]") {
+
+            if (responseOfWrite) {
+                let newPlan = document.getElementById('planes').value.split(":")[1];
+                document.getElementById('lotIdH').value = newPlan;
+                f_ConInfoAndon(true, newPlan);
+            }
+        }
+    }
+
+    document.getElementById('planes').value = '';
 }
+
 
 async function f_ListenPLC() {
     //Escucha la CPU del PLC para extraer si hay alguna peticion por parte del Lider
@@ -84,7 +96,8 @@ async function f_ListenPLC() {
     try {
 
         var tag = JSON.stringify({ tag: "ns=3;s=[" + urlSend.namePLC + "]linea_entradas_andon[" + lineData.id + "].sol_lider", type: "Int32" });
-        var solLider = await fetch(urlSend.urlPLC + urlSend.urlPLCrd + tag, headers).then(response => response.json()).then(data => data.data);
+        var solLider =  await fetch(urlSend.urlPLC+urlSend.urlPLCrd+tag, headers).then(response => response.json()).then(data => data.data);            
+
 
         if (solLider == 1) {
 
@@ -116,6 +129,8 @@ async function f_ListenPLC() {
 
         );*/
     }
+
+
 } //f_ListenPLC()
 
 async function f_MostrarEstaciones() {
@@ -148,6 +163,7 @@ async function f_MostrarEstaciones() {
     //   btnsignal.btn=3;  // etse es para el boton que presionation
     // btnsignal.signal=1; //este es para la se;at de que si se efetuo\
 
+
     // console.log(btnsignal.btn);
 
     var HeaderEficiencia = document.getElementById('HeaderPanelCenter');
@@ -175,7 +191,6 @@ async function f_MostrarEstaciones() {
     //console.log(timeEscuchaPLC);
     //clearTimeout(timeEscuchaPLC );
     //Reduce el mensaje a una hora
-    
 }
 
 
@@ -472,10 +487,8 @@ function f_reportarDefecto() {
         }
     });
 
-    txtcodigo = '';
-    txtcantidad = '';
-
-
+    document.getElementById('txtcodigo').value = '';
+    document.getElementById('txtcantidad').value = '';
 }
 
 
@@ -567,6 +580,7 @@ function f_timerAtencion() {
     }
     else if (secondsatencion == timeratencion) {
         auxatencion++;
+        console.log(auxatencion);
         f_callTelegram(ListAtencion[auxatencion].idgroup, ListAtencion[auxatencion].id, lineData.id, "Suceso en la linea" + lineData.name + " estacion:" + lineData.solstation);
         timeratencion = ListAtencion[auxatencion].acumulado1;
         //console.log( 'timer 180:' + timeratencion);

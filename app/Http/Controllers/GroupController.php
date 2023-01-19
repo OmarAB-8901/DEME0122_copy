@@ -56,6 +56,7 @@ class GroupController extends Controller
             ->select('machines.id','machines.name as name_machine','machines.activar_oee','machines.activar_eventos')
             ->where('groups.id','=', $id)
             ->where('machines.condicion','=', $condicion)->get();    
+            
         return  $groups;
     }
 }

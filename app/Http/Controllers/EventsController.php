@@ -30,7 +30,7 @@ class EventsController extends Controller
         $DB_SP = "EXECUTE";
         $DB_SP_START= "";
         $DB_SP_END= "";
-        
+        $date = "'" .$date ."'";
         $idgroup = auth()->user()->idgroup;
         $pareto = DB::select($DB_SP.' ConsultaParetoHras '.$DB_SP_START.'?,?,?'.$DB_SP_END,array($caso,$idmachine,$date));
         $paretoGrid = DB::select($DB_SP.' ConsultaParetoGrid '.$DB_SP_START.'?,?,?,?'.$DB_SP_END,array($caso,$idgroup,$idmachine,$date));

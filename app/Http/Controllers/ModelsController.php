@@ -13,7 +13,7 @@ class ModelsController extends Controller
 {
     public function index(Request $request)
     {
-            $models = Models::join('machines','models.idmachine','=','machines.id')
+            $models = Models::join('machines','models.idmachine','=','machines.id')->where("models.condicion", "=", "1")
             ->select('models.id','models.name','description','valor_std','models.idmachine','machines.name as name_machine','models.condicion')->orderBy('models.name', 'asc')->get();
 
             $hab_sensor = HabSensores::select('id','conteo_pzs')->get();

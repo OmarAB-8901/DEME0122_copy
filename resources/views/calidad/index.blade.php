@@ -19,15 +19,16 @@
                       <th>Nombre</th>
                       <th>Descripción</th>
                       <th>Cantidad</th>
-                      <th>Es Defecto</th>
+                      <th>Es Scrap</th>
                       <th>Cambiar status</th>
                     </tr>
                   </thead>
                   <tbody>
                    @foreach($calidad as $var)   
                     <tr>
-                     <td>{{date('d-m-Y', strtotime( $var['fecha'] ))}}</td>
-                     <td>{{date('H:m:s A', strtotime( $var['fecha'] ))}}</td>
+                     <td>{{date('Y-m-d', strtotime( $var['fecha'] ))}}</td>
+                     <!-- <td>{{date('d-m-Y', strtotime( $var['fecha'] ))}}</td> -->
+                     <td>{{date('H:i:s', strtotime( $var['fecha'] ))}}</td>
                      <td>{{$var['descrip']}}</td>
                      <td>{{$var['name']}}</td>
                      <td>{{$var['description']}}</td>

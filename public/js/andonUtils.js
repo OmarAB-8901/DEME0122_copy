@@ -7,6 +7,15 @@ function wait(espera_segundos) {
     tiempo_actual = Date.now();
   } while (tiempo_actual - tiempo_inicio < espera);
 }
+<<<<<<< HEAD
+=======
+
+/*Establecer relog */
+function f_setClock() {
+  document.getElementById("clock").innerHTML = moment().format('DD/MM/YYYY HH:mm:ss ');
+  setTimeout("f_setClock()", 1000);
+}
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
 
 /*Establecer relog */
 function f_setClock() {
@@ -16,7 +25,10 @@ function f_setClock() {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
 let station_array = [];
 
 
@@ -111,7 +123,12 @@ function f_callTelegram(vgrupo, vchart, vidShift, vmensaje) {
     dbMensaje: false,
     mensaje: vmensaje,
   }
+<<<<<<< HEAD
 
+=======
+  alert( "Telegram Func" );
+console.log( "Telegram Send", messageStructure );
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
   let headers = {
     method: 'POST',
     body: JSON.stringify(messageStructure),
@@ -159,7 +176,11 @@ function getListAndonTelegram(vSolicitudArea) {
 
 
 
+<<<<<<< HEAD
 function f_ConInfoAndon(newOrden = false, ordenId) {
+=======
+function f_ConInfoAndon(newOrden = false, ordenId=1) {
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
 
   //console.log("Hola mundo");
   //var elementoTable = document.getElementById('estado');
@@ -167,24 +188,41 @@ function f_ConInfoAndon(newOrden = false, ordenId) {
   var contenidoCentro = document.getElementById('cardBodyCenter');
   contenidoCentro.innerHTML = "";
   contenidoCentro.innerHTML = ` <div class="row">
+<<<<<<< HEAD
                                   <div class="col-xl-6">
+=======
+                                  <div class="col-xl-8">
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
                                       <div class="card-body">
                                           <h2 class="card-title text-dark">Progreso de la linea</h2>   
                                           <div class="row">
                                             <div class="col-xl-6 bg-devicorredgray text-white text-center">  
-                                                <h4>Piezas OK</h4>
+                                              <h4>Piezas Buenas</h4>
                                             </div>
+                                            
                                             <div class="col-xl-6 bg-devicorredgray text-white text-center">  
-                                              <h4>Piezas Defectuosas</h4>
+                                              <h4>Componentes Defectuosos</h4>
                                             </div>
+                                            
+                                            <!-- <div class="col-xl-4 bg-devicorredgray text-white text-center">  
+                                                <h4>Piezas Buenas</h4>
+                                            </div> -->
+                                            
                                           </div>        
                                           <div class="row">
+                                            
                                             <div class="col-xl-6 text-center bg-danger  text-white">  
-                                                <h4 id="pzasOk" >0</h4>
+                                                <h4 id="totProduccion" >0</h4>
                                             </div>
+
                                             <div class="col-xl-6 text-center bg-danger  text-white">  
                                               <h4 id="pzasDefec">0</h4>
                                             </div>
+
+                                            <!-- <div class="col-xl-4 text-center bg-danger  text-white">  
+                                                <h4 id="pzasOk" >0</h4>
+                                            </div> -->
+                                      
                                           </div>                                                                        
 
                                       </div>
@@ -202,6 +240,7 @@ function f_ConInfoAndon(newOrden = false, ordenId) {
 
 
   var lblmodelo = document.getElementById("lblModelo");
+<<<<<<< HEAD
 
   var lbldescripcionmodelo = document.getElementById("lblDescripcionModelo");
   var lblpzashora = document.getElementById("lblPiezasHora");
@@ -331,16 +370,138 @@ function f_set_catScrap() {
           ));
 
 
+=======
+  var lbldescripcionmodelo = document.getElementById("lblDescripcionModelo");
+  var lblpzashora = document.getElementById("lblPiezasHora");
+  var lblplan = document.getElementById("lblPlan");
+
+  varh = [];
+  varl = [];
+  mensaje = "";
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url: '/button/andon/coninfoandon/1/' + vstation + '/' + (!newOrden ? 1 : ordenId),
+    type: 'GET',
+    success: function (response) {
+      if (response.length > 0) {
+        response.forEach(function (elemento, indice) {
+
+          // console.log(elemento);
+          lblmodelo.innerHTML = "<h4>" + elemento[0]["modelo"] + "</h4>";
+          lbldescripcionmodelo.innerHTML = "<h4>" + elemento[0]["descmodelo"] + "</h4>";
+
+          lblpzashora.innerHTML = "<h4>" + elemento[0]["pzashora"] + "</h4>";
+          lblplan.innerHTML = "<h4>" + elemento[0]["total"] + "</h4>";
+
+          // console.log('piezasokk' + elemento[0]["piezasok"]);
+          // document.getElementById("pzasOk").innerHTML = `<h4>${elemento[0].goodpart}</h4>`;
+          document.getElementById("pzasOk").innerHTML = `<h4>${elemento[0].piezasok}</h4>`;
+
+          // console.log('pzasDefec' + elemento[0]["piezasdefectuosas"]);
+          document.getElementById("pzasDefec").innerHTML = `<h4>${elemento[0].piezasdefectuosas}</h4>`;
+        });
+
+      }
+    }
+
+  });
+
+  //setTimeout("f_get_selected()",80000);
+}
+
+
+//View the workplan into the select item into the lider module
+
+var listaPlanes = [];
+
+function f_get_estado2() {
+  //  var listaPlanes=[];
+  // select = document.getElementById("planes");    
+  select = document.getElementById("allPlanes");
+  mensaje = "";
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url: '/button/andon/coninfoandon/2/' + vstation + '/1',
+    type: 'GET',
+    success: function (response) {
+      if (response.length > 0) {
+
+        response[0].forEach((elemento, index) => {
+          let objPlanes = {
+            id: elemento['id'],
+            wo: elemento['wo'],
+            nombre: elemento['nombre'],
+            cantasoc: elemento['cantasoc'],
+            lote: elemento['lote'],
+            ict: elemento['ict'],
+            estado: elemento['estadoplanes']
+          }
+          listaPlanes.push(objPlanes);
+
+          option = document.createElement("option");
+          // option.value = listaPlanes[index]['id'];
+          // option.text = listaPlanes[index]['wo'] + listaPlanes[index]['nombre'];
+
+          option.value = listaPlanes[index]['wo'] + listaPlanes[index]['nombre'];
+          // option.text = listaPlanes[index]['id'];
+
+          select.appendChild(option);
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
         });
       }
     }
   });
-
-
-
+<<<<<<< HEAD
+=======
 }
 
+var listaScrap = [];
+function f_set_catScrap() {
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
 
+  //  var listaPlanes=[];
+  // select = document.getElementById("planes");
+  select = document.getElementById("allPlanes");
+  mensaje = "";
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    url: '/button/andon/coninfoandon/4/1/1',
+    type: 'GET',
+    success: function (response) {
+      if (response.length > 0) {
+        //{,"defectosaceptados":"5","codigo":"3","":"1","tiposcrap":"AJUSTES (Set-up)","idgroup":"6","gruponame":"Produccion"},
+        response[0].forEach((elemento, index) => {
+
+          listaScrap.push(new Scrap(
+            elemento['id'],
+            elemento['scrapname'],
+            elemento['scrapdescription'],
+            elemento['defectosaceptados'],
+            elemento['codigo'],
+            elemento['idtiposscrap'],
+            elemento['tiposcrap'],
+            elemento['idgroup'],
+            elemento['gruponame']
+          ));
+
+
+        });
+      }
+    }
+  });
+}
 
 var ListEventsType = [];
 function f_GetEventsType() {
@@ -358,4 +519,101 @@ function f_GetEventsType() {
   { id: 16, nombre: 'Otros', inicial: 'L' }]
 }
 
+// Carlos Omar Anaya Barajas
+async function calculateEficienciaLinea(newOrden, ordenId) {
 
+  let avance = await fetch('/button/andon/coninfoandon/1/' + vstation + '/' + (!newOrden ? 1 : ordenId)).then(json => json.json()).then(data => data);
+
+  document.getElementById("lblModelo").innerHTML = "<h4>" + avance[0][0]["modelo"] + "</h4>";
+  document.getElementById("lblDescripcionModelo").innerHTML = "<h4>" + avance[0][0]["descmodelo"] + "</h4>";
+  document.getElementById("lblPiezasHora").innerHTML = "<h4>" + avance[0][0]["pzashora"] + "</h4>";
+  document.getElementById("lblPlan").innerHTML = "<h4>" + avance[0][0]["total"] + "</h4>";
+
+  document.getElementById('totProduccion').innerText = avance[0][0].piezasok;
+  // document.getElementById('pzasOk').innerText = avance[0][0].piezasok - avance[0][0].piezasdefectuosas;
+  document.getElementById('pzasDefec').innerText = avance[0][0].piezasdefectuosas;
+
+<<<<<<< HEAD
+var ListEventsType = [];
+function f_GetEventsType() {
+  ListEventsType = [{ id: 5, nombre: 'Despeje de Linea', inicial: 'A' },
+  { id: 6, nombre: 'Liberacion de Linea Mtto. Set Up', inicial: 'B' },
+  { id: 7, nombre: 'Tiempo muerto de maquinas', inicial: 'C' },
+  { id: 8, nombre: 'Faltante de Materiales', inicial: 'D' },
+  { id: 9, nombre: 'Faltante de etiquetas', inicial: 'E' },
+  { id: 10, nombre: 'Mal ensamble', inicial: 'F' },
+  { id: 11, nombre: 'Entrenamiento', inicial: 'G' },
+  { id: 12, nombre: 'Falta de personal', inicial: 'H' },
+  { id: 13, nombre: '	Problemas de calidad', inicial: 'I' },
+  { id: 14, nombre: 'Almacen', inicial: 'J' },
+  { id: 15, nombre: 'Falta de plan', inicial: 'K' },
+  { id: 16, nombre: 'Otros', inicial: 'L' }]
+=======
+  avance = (avance[0][0].piezasok - avance[0][0].piezasdefectuosas) / (avance[0][0].piezasok != 0 ? avance[0][0].piezasok : 100);
+  avance = avance > 0 ? Math.ceil(avance * 100) : 0;
+
+  console.log(avance);
+
+  myChart_avance.setOption(options(avance != Infinity ? avance : 0));
+
+  return avance;
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
+}
+
+function options(value) {
+  return {
+
+    series: [
+      {
+        type: 'gauge',
+        axisLine: {
+          lineStyle: {
+            width: 10,
+            color: [
+              [0.95, '#ff0000'],
+              [1, '#008f39']
+            ]
+          }
+        },
+        pointer: {
+          itemStyle: {
+            color: 'auto'
+          }
+        },
+        axisTick: {
+          distance: -30,
+          length: 5,
+          lineStyle: {
+            color: '#fff',
+            width: 2
+          }
+        },
+        splitLine: {
+          distance: -30,
+          length: 10,
+          lineStyle: {
+            color: '#fff',
+            width: 4
+          }
+        },
+        axisLabel: {
+          color: 'auto',
+          distance: 5,
+          fontSize: 15
+        },
+        detail: {
+          valueAnimation: true,
+          fontSize: 45,
+          formatter: '{value}%',
+          color: 'auto'
+        },
+        data: [
+          {
+            value: value
+          }
+        ]
+      }
+    ]
+
+  };
+}

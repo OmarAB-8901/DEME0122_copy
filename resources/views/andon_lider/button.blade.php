@@ -15,6 +15,10 @@
                 @foreach($linea as $varline)
                 <input type="hidden" id="lineId" name="lineId" value="{{$varline['id']}}"> </input>
                 <input type="hidden" id="lineDesc" name="lineDesc" value="{{$varline['name']}}"> </input>
+<<<<<<< HEAD
+=======
+                <input type="hidden" id="lotIdH" name="lotIdH" value="1"> </input>
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
                 <h2 id="lineName" class="display-5 text-dark ">Andon: {{$varline['name']}}</h2>
                 <div>
                     <h4 id="clock" class="text-dark"></h4>
@@ -43,7 +47,11 @@
                                     </div>
                                     <div class="row form-group">
                                         <div class="col-xl-8">
+<<<<<<< HEAD
                                             <!-- <select name="planes" id="planes" class="form-control  form-select" aria-label="Seleccione"> </select> -->
+=======
+                                            <!-- <select name="planes" id="planes" class="form-control  form-select" aria-label="Seleccione"></select> -->
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
                                             <input type="text" name="planes" id="planes" class="form-control  form-select" aria-label="Seleccione" list="allPlanes">
                                             <datalist id="allPlanes" class="testDataList"></datalist>
                                         </div>
@@ -55,6 +63,7 @@
                                         <div class="row form-group">
                                             <div class="col-xl-4 ">Modelo</div>
                                             <div class="col-xl-8">Descripci&oacute;n</div>
+<<<<<<< HEAD
                                         </div>
                                         <div class="row ">
                                             <div class="col-xl-4" id="lblModelo">#Modelo</div>
@@ -65,6 +74,18 @@
                                             <div class="col-xl-6">Plan</div>
                                         </div>
                                         <div class="row ">
+=======
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-xl-4" id="lblModelo">#Modelo</div>
+                                            <div class="col-xl-8" id="lblDescripcionModelo">#Descripci&oacute;n</div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-xl-6">Piezas/hora</div>
+                                            <div class="col-xl-6">Plan</div>
+                                        </div>
+                                        <div class="row ">
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
                                             <div class="col-xl-6" id="lblPiezasHora">#Piezas/Hora</div>
                                             <div class="col-xl-6" id="lblPlan">#Plan</div>
                                         </div>
@@ -194,7 +215,11 @@
                                             <h3 class="m-0 font-weight-bold text-primary text-light " style="text-align:center">Eficiencia de la linea:</h3>
                                         </div>
                                         <div class="card-body">
+<<<<<<< HEAD
                                             <div class="echarts" id="chart-panel_avance" style="width: 500px; height:250%;"></div>
+=======
+                                            <div class="echarts" id="chart-panel_avance" style="width: 700px; height:250px;"></div>
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
                                         </div>
                                     </div>
 
@@ -206,6 +231,7 @@
                         </div>
                     </div>
                 </div> <!------------------   FIN DE ESTADISTICA DE TRABAJO --------------------------------->
+<<<<<<< HEAD
 
 
 
@@ -213,12 +239,22 @@
 
         </div> <!---------------------------    FIN DE CONTENIDO-------------------------------------------->
 
+=======
+
+
+
+            </div> <!------------------   FIN DE PANEL CENTER --------------------------------->
+
+        </div> <!---------------------------    FIN DE CONTENIDO-------------------------------------------->
+
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
     </div><!------------------------------      END OF PRINCIPAL    --------------------------------------------------------->
 
     @endsection
     @section('scripts')
     <script>
         var timeEscuchaPLC;
+<<<<<<< HEAD
         var escuchaSolicitud = 60000;
 
         $(document).ready(function() {
@@ -229,6 +265,20 @@
                 // myChart_oee.resize();
                 myChart_avance.resize();
                 //myChart_defectos.resize(); Se quita porque me indican que no es de utilizad 20221217
+=======
+        var escuchaSolicitud = 2000;
+        var myChart_avance;
+
+        $(document).ready(function() {
+            vstation = $('input[name="lineId"]').val();
+            timeEscuchaPLC = setInterval(f_ListenPLC, escuchaSolicitud);
+
+            window.addEventListener('resize', function() {
+                // myChart_oee.resize();
+                myChart_avance.resize();
+                //myChart_defectos.resize(); Se quita porque me indican que no es de utilizad 20221217
+
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
             });
 
             f_get_estado2(); //Traerse la información de todos los planes de la linea             
@@ -241,6 +291,7 @@
             f_setClock(); //Set the time permanently;
             //Load the andon's information OEE, Events and WorkPlan, the graphical status
             f_GetEventsType()
+<<<<<<< HEAD
 
             //Listen PLC's signals
         });
@@ -249,6 +300,21 @@
         myChart.resize();
         });*/
 
+=======
+
+            //Listen PLC's signals
+
+            setInterval(async () => {
+                let lotId = document.getElementById('lotIdH').value;
+                await calculateEficienciaLinea(true, lotId);
+            }, 2000);
+        });
+        /* 
+        window.addEventListener('resize',function(){
+        myChart.resize();
+        });*/
+
+>>>>>>> 42b242137d1826f1a7b9db29e8ce0905a6fa1cf1
         function f_set_dataLine() {
             var vLine = $('input[name="lineId"]').val();
             var vDesc = $('input[name="lineDesc"]').val();
